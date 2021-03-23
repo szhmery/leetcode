@@ -1,11 +1,12 @@
 from typing import List
 
+
 class Solution:
     def reverseString(self, s: List[str]) -> None:
         """
         Do not return anything, modify s in-place instead.
         """
-        half_lenght = int(len(s)/2)
+        half_lenght = int(len(s) / 2)
         for k in range(half_lenght):
             # temp = s[k]
             # s[k] = s[len(s)-1-k]
@@ -16,9 +17,9 @@ class Solution:
         s.reverse()
 
 
-if __name__=="__main__":
+if __name__ == "__main__":
     solution = Solution()
-    string1=["h","e","l","l","o"]
+    string1 = ["h", "e", "l", "l", "o"]
     print("before reverse:{}".format(string1))
     solution.reverseString(string1)
     print("after reverse:{}".format(string1))

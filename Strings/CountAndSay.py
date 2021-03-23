@@ -3,7 +3,7 @@ class Solution:
         if n == 1:
             return str(1)
         if n > 1:
-            number = self.countAndSay(n-1)
+            number = self.countAndSay(n - 1)
             num_string = number
             length = len(num_string)
             count = 1
@@ -22,6 +22,7 @@ class Solution:
                         count = 1
                 return_str += str(count) + num
                 return return_str
+
 
 if __name__ == '__main__':
     solution = Solution()

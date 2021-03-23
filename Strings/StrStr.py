@@ -7,6 +7,7 @@ class Solution:
         else:
             return haystack.find(needle)
 
+
 if __name__ == '__main__':
     solution = Solution()
     haystack = "hello"

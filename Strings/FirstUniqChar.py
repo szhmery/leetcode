@@ -10,7 +10,8 @@ class Solution:
                 return i
         return -1
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     solution = Solution()
     s = "leetcode"
     index = solution.firstUniqChar(s)
@@ -31,6 +32,3 @@ if __name__=='__main__':
     s = "aadadaad"
     index = solution.firstUniqChar(s)
     print("First unique character index: {}".format(index))
-
-
-

@@ -8,7 +8,7 @@ class Solution:
         """
         for i in range(k):
             # nums = [nums.pop()]+ nums
-            nums.insert(0,nums.pop())
+            nums.insert(0, nums.pop())
 
 
 if __name__ == "__main__":

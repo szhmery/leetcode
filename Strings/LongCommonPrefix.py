@@ -1,5 +1,6 @@
 from typing import List
 
+
 class Solution:
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if len(strs) == 0:
@@ -9,7 +10,7 @@ class Solution:
 
         length = len(strs[0])
         for str in strs:
-            length = min(len(str),length)
+            length = min(len(str), length)
         if length == 0:
             return ''
         else:
@@ -25,9 +26,10 @@ class Solution:
                 common_prefix += tmp
             return common_prefix
 
+
 if __name__ == '__main__':
     solution = Solution()
-    strs = ["flower","flow","flight"]
+    strs = ["flower", "flow", "flight"]
     print(solution.longestCommonPrefix(strs))
     strs = ["dog", "racecar", "car"]
     print(solution.longestCommonPrefix(strs))

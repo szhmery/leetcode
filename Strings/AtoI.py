@@ -1,4 +1,3 @@
-
 class Solution:
     def myAtoi(self, s: str) -> int:
         tmp_str = ''
@@ -26,25 +25,26 @@ class Solution:
             if tmp_str[j] < str(0) or tmp_str[j] > str(9):
                 break
             else:
-                tmp2_str = tmp_str[:j+1]
+                tmp2_str = tmp_str[:j + 1]
                 continue
         # step 4:
         if len(tmp2_str) == 0:
             return 0
         else:
             if is_negative:
-                return_num = int('-'+tmp2_str)
+                return_num = int('-' + tmp2_str)
             else:
                 return_num = int(tmp2_str)
         # step 5:
-        if return_num > 2**31-1:
-            return 2**31-1
-        elif return_num < -2**31:
-            return -2**31
+        if return_num > 2 ** 31 - 1:
+            return 2 ** 31 - 1
+        elif return_num < -2 ** 31:
+            return -2 ** 31
         else:
             return return_num
 
-if __name__=='__main__':
+
+if __name__ == '__main__':
     solution = Solution()
     s = "42"
     result = solution.myAtoi(s)
@@ -64,6 +64,3 @@ if __name__=='__main__':
     s = ""
     result = solution.myAtoi(s)
     print("myatoi: {0} -> {1}".format(s, result))
-
-
-
