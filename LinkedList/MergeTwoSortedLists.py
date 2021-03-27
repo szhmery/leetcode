@@ -33,7 +33,7 @@ class Solution:
         insert_node = insert_list
 
         while insert_list is not None:
-            if node.val <= insert_node.val and insert_node.val <= next_node.val:
+            if node.val <= insert_node.val <= next_node.val:
                 # need to insert insert_node after node and before next_node
                 insert_list = insert_node.next
                 node.next = insert_node
