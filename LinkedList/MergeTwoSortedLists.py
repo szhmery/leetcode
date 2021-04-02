@@ -52,13 +52,24 @@ class Solution:
                 return head
         return head
 
+    def mergeTwoLists2(self, l1: ListNode, l2: ListNode) -> ListNode:
+        if l1 is None:
+            return l2
+        if l2 is None:
+            return l1
+        if l1.val < l2.val:
+            l1.next = self.mergeTwoLists2(l1.next, l2)
+            return l1
+        else:
+            l2.next = self.mergeTwoLists2(l1, l2.next)
+            return l2
 
 if __name__ == '__main__':
     l1 = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
     l2 = ListNode(1, ListNode(4, ListNode(4, ListNode(5, ListNode(10)))))
 
     solution = Solution()
-    newList = solution.mergeTwoLists(l1, l2)
+    newList = solution.mergeTowLists2(l1, l2)
     print("\nAfter:")
     tmp_list = newList
     while tmp_list != None:
