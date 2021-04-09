@@ -48,6 +48,14 @@ class Solution:
 
         return max_profit
 
+    def maxProfitAnswer2(self, prices: List[int]) -> int:
+        max_profit = 0
+
+        for i in range(len(prices)-1):
+            if prices[i] < prices[i+1]:
+                max_profit += prices[i+1] - prices[i]
+        return max_profit
+
 
 if __name__ == "__main__":
     solution = Solution()
@@ -67,3 +75,9 @@ if __name__ == "__main__":
     max = solution.maxProfit(prices4)
     max_answer = solution.maxProfitAnswer(prices4)
     print("max profit {0} : {1}".format(max, max_answer))
+
+    prices4 = [2, 1, 4, 5, 2, 9, 7]
+    max = solution.maxProfit(prices4)
+    max_answer = solution.maxProfitAnswer2(prices4)
+    print("max profit {0} : {1}".format(max, max_answer))
+
