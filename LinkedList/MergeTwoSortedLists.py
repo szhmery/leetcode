@@ -64,6 +64,7 @@ class Solution:
             l2.next = self.mergeTwoLists2(l1, l2.next)
             return l2
 
+
 if __name__ == '__main__':
     l1 = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
     l2 = ListNode(1, ListNode(4, ListNode(4, ListNode(5, ListNode(10)))))
