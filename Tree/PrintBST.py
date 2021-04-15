@@ -3,6 +3,8 @@ class PrintBST:
     @staticmethod
     def printBST(root) -> None:
         res = []
+        if root is None:
+            print("Tree is None")
         queue = [root]
         while len(queue) != 0:
             valid_queue = []
@@ -16,7 +18,6 @@ class PrintBST:
             new_queue = []
 
             for node in valid_queue:
-
                 if node.left:
                     new_queue.append(node.left)
                 else:

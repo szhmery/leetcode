@@ -19,7 +19,7 @@ class Solution:
         if result is False:
             return False
 
-        if self.last is not None and self.last.val >= root.val:
+        if self.last and self.last.val >= root.val:
             return False
 
         self.last = root

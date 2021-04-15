@@ -28,6 +28,19 @@ class Solution:
 
         return res
 
+    def levelOrder2(self, root: TreeNode) -> 'List[List[int]]':
+        res = []
+        self.preOrder(root, 0, res)
+        return res
+
+    def preOrder(self, node, level, res):
+        if node:
+            if len(res) < level + 1:
+                res.append([])
+
+            res[level].append(node.val)
+            self.preOrder(node.left, level + 1, res)
+            self.preOrder(node.right, level + 1, res)
 
 if __name__ == '__main__':
     root = TreeNode(3)
@@ -43,5 +56,8 @@ if __name__ == '__main__':
     PrintBST.printBST(root)
     solution = Solution()
     result = solution.levelOrder(root)
-    print('Order traversal:')
+    print('method 1: Order traversal:')
+    print(result)
+    result = solution.levelOrder2(root)
+    print('method 2: Order traversal:')
     print(result)
