@@ -16,6 +16,18 @@ class Solution:
             nums.pop(len(nums) - 1)
         return i
 
+    def removeDuplicates2(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        i = 0
+        for j in range(i, len(nums)):
+            if nums[i] != nums[j]:
+                i += 1
+                nums[i] = nums[j]
+        return i + 1
+
+
+
 
 if __name__ == '__main__':
     solution = Solution()
@@ -23,12 +35,12 @@ if __name__ == '__main__':
     print("Before:")
     print(nums)
     print("After:")
-    print(solution.removeDuplicates(nums))
+    print(solution.removeDuplicates2(nums))
     print(nums)
 
     nums = [0, 0, 1, 1, 1, 2, 2, 3, 3, 4]
     print("Before:")
     print(nums)
     print("After:")
-    print(solution.removeDuplicates(nums))
+    print(solution.removeDuplicates2(nums))
     print(nums)

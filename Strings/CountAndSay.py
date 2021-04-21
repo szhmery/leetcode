@@ -23,6 +23,32 @@ class Solution:
                 return_str += str(count) + num
                 return return_str
 
+    def countAndSay2(self, n):
+        """
+        :type n: int
+        :rtype: str
+        """
+        return ''.join(self.nextSequence(n, ['1', 'E']))
+
+    def nextSequence(self, n, prevSeq):
+        if n == 1:
+            return prevSeq[:-1]
+
+        nextSeq = []
+        prevDigit = prevSeq[0]
+        digitCnt = 1
+        for digit in prevSeq[1:]:
+            if digit == prevDigit:
+                digitCnt += 1
+            else:
+                # the end of a sub-sequence
+                nextSeq.extend([str(digitCnt), prevDigit])
+                prevDigit = digit
+                digitCnt = 1
+
+        # add a delimiter for the next sequence
+        nextSeq.append('E')
+        return self.nextSequence(n - 1, nextSeq)
 
 if __name__ == '__main__':
     solution = Solution()
@@ -30,3 +56,9 @@ if __name__ == '__main__':
     print(solution.countAndSay(4))
     print(solution.countAndSay(5))
     print(solution.countAndSay(10))
+
+
+    print(solution.countAndSay2(1))
+    print(solution.countAndSay2(4))
+    print(solution.countAndSay2(5))
+    print(solution.countAndSay2(10))
