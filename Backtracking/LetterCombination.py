@@ -24,23 +24,28 @@ class Solution:
             self.findCombination(digits, mapping, index + 1, string + letter[i], res)
         return
 
-    # # iterative
-    # def letterCombinations2(self, digits: str) -> List[str]:
-    #     result = []
-    #     if digits == '':
-    #         return result
-    #     number_mapping = [' ', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
-    #     for i in len(digits):
-    #         t = []
-    #         string = number_mapping[int(digits[i])]
-    #         for j in range(len(string)):
-    #             for letter in result:
-    #                 t.append(letter + string[j])
-    #         result = t
-    #     return result
+    # iterative
+    def letterCombinations2(self, digits: str) -> List[str]:
+        result = []
+        if digits == '':
+            return result
+        number_mapping = [' ', '', 'abc', 'def', 'ghi', 'jkl', 'mno', 'pqrs', 'tuv', 'wxyz']
+        for i in range(len(digits)):
+            t = []
+            string = number_mapping[int(digits[i])]
+            for j in range(len(string)):
+                if result:
+                    for s in result:
+                        t.append(s + string[j])
+                else:
+                    t.append(string[j])
+            result = t
+        return result
 
 
 if __name__ == '__main__':
     solution = Solution()
     result = solution.letterCombinations('29')
+    print(result)
+    result = solution.letterCombinations2('29')
     print(result)

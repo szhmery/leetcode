@@ -2,6 +2,7 @@ from typing import List
 
 
 class Solution:
+    # Two Pointers
     def threeSum(self, nums: List[int]) -> List[List[int]]:
         nums.sort()
         res = []

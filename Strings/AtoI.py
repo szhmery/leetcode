@@ -1,3 +1,6 @@
+import math
+
+
 class Solution:
     def myAtoi(self, s: str) -> int:
         tmp_str = ''
@@ -43,24 +46,47 @@ class Solution:
         else:
             return return_num
 
+    def myAtoi2(self, s: str) -> int:
+        i = 0
+        sign = 1
+        result = 0
+        MAX_VALUE = 2 ** 31 - 1
+        MIN_VALUE = -2 ** 31
+        if len(s) == 0:
+            return 0
+        # Discard whitespaces in the beginning
+        while i < len(s) and s[i] == ' ':
+            i += 1
+        # check if optional sign if it exits
+        if i < len(s) and (s[i] == '+' or s[i] == '-'):
+            sign = -1 if s[i] == '-' else 1
+            i += 1
+        # build the result and check for overflow/underflow condition
+        while i < len(s) and s[i] >= '0' and s[i] <= '9':
+            if result > MAX_VALUE // 10 or (result == MAX_VALUE // 10 and int(s[i]) > MAX_VALUE % 10):
+                return MAX_VALUE if sign == 1 else MIN_VALUE
+            result = result * 10 + int(s[i])
+            i += 1
+
+        return result * sign
 
 if __name__ == '__main__':
     solution = Solution()
     s = "42"
-    result = solution.myAtoi(s)
+    result = solution.myAtoi2(s)
     print("myatoi: {0} -> {1}".format(s, result))
     s = "   -42"
-    result = solution.myAtoi(s)
+    result = solution.myAtoi2(s)
     print("myatoi: {0} -> {1}".format(s, result))
     s = "4193 with words"
-    result = solution.myAtoi(s)
+    result = solution.myAtoi2(s)
     print("myatoi: {0} -> {1}".format(s, result))
     s = "words and 987"
-    result = solution.myAtoi(s)
+    result = solution.myAtoi2(s)
     print("myatoi: {0} -> {1}".format(s, result))
     s = "-91283472332"
-    result = solution.myAtoi(s)
+    result = solution.myAtoi2(s)
     print("myatoi: {0} -> {1}".format(s, result))
-    s = ""
-    result = solution.myAtoi(s)
+    s = " "
+    result = solution.myAtoi2(s)
     print("myatoi: {0} -> {1}".format(s, result))
