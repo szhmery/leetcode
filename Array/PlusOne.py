@@ -16,6 +16,17 @@ class Solution:
 
         return return_digits
 
+    def plusOne2(self, digits: List[int]) -> List[int]:
+        bit = 1
+        for i in range(len(digits)-1, -1, -1):
+            a = digits[i] + bit
+            bit = a // 10
+            digits[i] = a % 10
+        if bit == 1:
+            digits.insert(0, 1)
+        return digits
+
+
 
 if __name__ == "__main__":
     solution = Solution()
@@ -42,4 +53,8 @@ if __name__ == "__main__":
     before_num = [9, 9]
     print("before plus one:{}".format(before_num))
     after_num = solution.plusOne(before_num)
+    print("after plus one:{}".format(after_num))
+    before_num = [9, 9]
+    print("before plus one:{}".format(before_num))
+    after_num = solution.plusOne2(before_num)
     print("after plus one:{}".format(after_num))
