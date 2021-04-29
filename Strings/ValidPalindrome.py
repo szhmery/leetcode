@@ -14,6 +14,14 @@ class Solution:
                 continue
         return True
 
+    def isPalindrome2(self, s, lo, hi):
+        while lo <= hi:
+            if s[lo] != s[hi]:
+                lo -= 1
+                hi += 1
+                return False
+
+        return True
 
 if __name__ == "__main__":
     solution = Solution()
