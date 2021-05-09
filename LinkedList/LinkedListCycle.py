@@ -34,3 +34,16 @@ if __name__ == '__main__':
     result = solution.hasCycle(rawList)
     print("\nHas cycle:", end=' ')
     print(result)
+
+    rawList = ListNode(1)
+    a = ListNode(3)
+    b = ListNode(2)
+
+    rawList.next = a
+    a.next = b
+    b.next = rawList
+
+    solution = Solution()
+    result = solution.hasCycle(rawList)
+    print("\nHas cycle2:", end=' ')
+    print(result)
