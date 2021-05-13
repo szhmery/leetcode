@@ -13,7 +13,7 @@ class Solution:
     def helper(self, result: List, string, left_number, right_number):
         if left_number == right_number == 0:
             result.append(string)
-            return result
+            return
         if left_number > 0:
             self.helper(result, string + '(', left_number - 1, right_number)
         if left_number < right_number:

@@ -30,10 +30,20 @@ class Solution:
             max_subarray = max(max_subarray, current_subarray)
         return max_subarray
 
+    # DP
+    def maxSubArray3(self, nums: List[int]) -> int:
+        memo = [None] * len(nums)
+        memo[0] = nums[0]
+        max_count = nums[0]
+        for i in range(1, len(nums)):
+            memo[i] = max(nums[i], memo[i-1] + nums[i])
+            max_count = max(max_count, memo[i])
+        return max_count
+
     # Complexity Analysis
     # Time complexity: O(N⋅logN), where N is the length of nums.
     # Space complexity: O(logN), where N is the length of nums.
-    def maxSubArray3(self, numbs: List[int]) -> int:
+    def maxSubArray4(self, numbs: List[int]) -> int:
 
         def findBestSubarray(nums, left, right):
             # Base case - empty array.
@@ -78,4 +88,6 @@ if __name__ == '__main__':
     result = solution.maxSubArray2(nums)
     print('Max Sub Array:{}'.format(result))
     result = solution.maxSubArray3(nums)
+    print('Max Sub Array:{}'.format(result))
+    result = solution.maxSubArray4(nums)
     print('Max Sub Array:{}'.format(result))

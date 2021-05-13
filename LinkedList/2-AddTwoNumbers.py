@@ -14,7 +14,7 @@ class Solution:
         dummy = ListNode()
         l3 = dummy
         overbit = 0
-        while l1 is not None or l2 is not None:
+        while l1 or l2:
             x = l1.val if l1 else 0
             y = l2.val if l2 else 0
             sum_val = x + y + overbit

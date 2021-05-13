@@ -9,7 +9,7 @@ class Solution:
     def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         tmp_list = head
         length = 0
-        while tmp_list != None:
+        while tmp_list:
             length += 1
             tmp_list = tmp_list.next
         if length == 1 and n == 1:
@@ -53,7 +53,7 @@ class Solution:
         dummy.next = head
         first = dummy
         second = dummy
-        for i in range(n+1):
+        for i in range(n + 1):
             first = first.next
         while first:
             first = first.next
@@ -63,7 +63,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    rawList = ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))
+    rawList = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 
     print("\nBefore:")
     tmp_list = rawList
@@ -101,7 +101,7 @@ if __name__ == '__main__':
         print(str(tmp_list.val), end='->')
         tmp_list = tmp_list.next
 
-    rawList = ListNode(1,ListNode(2,ListNode(3,ListNode(4,ListNode(5)))))
+    rawList = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
     rawList = solution.removeNthFromEnd3(rawList, 2)
     print("\nMethod 3 After:")
     tmp_list = rawList

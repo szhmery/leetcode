@@ -33,6 +33,8 @@ class Solution:
             else:
                 stack.append(char)
         return not stack
+
+
 if __name__ == '__main__':
     solution = Solution()
     s = "()[]{}"

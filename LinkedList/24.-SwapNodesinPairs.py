@@ -3,6 +3,8 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
 class Solution:
     # iterate
     def swapPairs(self, head: ListNode) -> ListNode:
@@ -33,7 +35,7 @@ class Solution:
         if head is None or head.next is None:
             return head
         t = head.next
-        head.next = self.swapPairs(head.next.next)
+        head.next = self.swapPairs2(head.next.next)
         t.next = head
         return t
 
