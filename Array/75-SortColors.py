@@ -2,6 +2,7 @@ from typing import List
 
 
 class Solution:
+    # https://www.bilibili.com/video/BV1ua4y1v7yd/?spm_id_from=autoNext
     def sortColors(self, nums: List[int]) -> None:
         """
         Do not return anything, modify nums in-place instead.
