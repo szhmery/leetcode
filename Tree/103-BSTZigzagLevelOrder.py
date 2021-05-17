@@ -50,6 +50,7 @@ class Solution:
             self.preOrder(node.left, level + 1, res)
             self.preOrder(node.right, level + 1, res)
 
+
 if __name__ == '__main__':
     root = TreeNode(3)
     a = TreeNode(9)

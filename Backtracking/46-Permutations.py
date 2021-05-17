@@ -1,4 +1,5 @@
 from typing import List
+from collections import Counter
 
 
 class Solution:
@@ -7,17 +8,16 @@ class Solution:
         self.helper(nums, [], ans)
         return ans
 
-    def helper(self, nums, element, result):
+    def helper(self, nums, element, ans):
         if len(element) == len(nums):
-            result.append(element[:])
-            return result
+            ans.append(element[::])
+            return
         for num in nums:
             if num in element:
                 continue
-            else:
-                element.append(num)
-                self.helper(nums, element, result)
-                element.pop()
+            element.append(num)
+            self.helper(nums, element, ans)
+            element.pop()
 
 
 if __name__ == '__main__':
