@@ -6,7 +6,7 @@ class Solution:
         """
         Do not return anything, modify s in-place instead.
         """
-        half_lenght = int(len(s) / 2)
+        half_lenght = int(len(s) // 2)
         for k in range(half_lenght):
             # temp = s[k]
             # s[k] = s[len(s)-1-k]
