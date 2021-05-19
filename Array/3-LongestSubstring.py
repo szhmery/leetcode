@@ -1,4 +1,73 @@
 class Solution:
+    # slicing window
+    # use array, save count
+    def lengthOfLongestSubstring(self, s: str) -> int:
+        if s is None or len(s) == 0:
+            return 0
+        char_map = [0] * 256
+        lo = 0
+        length = 0
+        for hi in range(len(s)):
+            char_map[ord(s[hi])] += 1
+            while char_map[ord(s[hi])] > 1:
+                char_map[ord(s[lo])] -= 1  # move lo, reduce the count of lo, not hi.
+                lo += 1
+            length = max(length, hi - lo + 1)
+        return length
+
+    # use set, save char
+    def lengthOfLongestSubstring2(self, s: str) -> int:
+        if s is None or len(s) == 0:
+            return 0
+        char_set = set()
+        lo = 0
+        length = 0
+        for hi in range(len(s)):
+            if s[hi] in char_set:
+                while lo < hi and s[lo] != s[hi]:
+                    char_set.remove(s[lo])
+                    lo += 1
+                lo += 1
+            else:
+                char_set.add(s[hi])
+            length = max(length, hi - lo + 1)
+        return length
+
+    # use dict, save index
+    def lengthOfLongestSubstring3(self, s: str) -> int:
+        n = len(s)
+        ans = 0
+        # mp stores the current index of a character
+        mp = {}
+
+        i = 0
+        # try to extend the range [i, j]
+        for j in range(n):
+            if s[j] in mp:
+                # i = max(mp[s[j]], i) # if save index + 1
+                i = max(mp[s[j]] + 1, i)
+            mp[s[j]] = j
+            ans = max(ans, j - i + 1)
+            # mp[s[j]] = j + 1 # if save index + 1
+
+        return ans
+
+    # use array, save index
+    def lengthOfLongestSubstring4(self, s: str) -> int:
+        chars = [None] * 128
+        left = right = 0
+        ans = 0
+        while right < len(s):
+            r = ord(s[right])
+            index = chars[r]
+            if index != None and index >= left and index < right:
+                left = index + 1
+            chars[r] = right
+
+            ans = max(ans, right - left + 1)
+            right += 1
+        return ans
+
     """
       # wrong!
        def lengthOfLongestSubstring_wrong(self, s: str) -> int:
@@ -35,74 +104,6 @@ class Solution:
 
            return length
            """
-    # slicing window
-    # use array, save count
-    def lengthOfLongestSubstring(self, s: str) -> int:
-        if s is None or len(s) == 0:
-            return 0
-        char_map = [0] * 256
-        lo = 0
-        length = 0
-        for hi in range(len(s)):
-            char_map[ord(s[hi])] += 1
-            while char_map[ord(s[hi])] > 1:
-                char_map[ord(s[lo])] -= 1 # move lo, reduce the count of lo, not hi.
-                lo += 1
-            length = max(length, hi - lo + 1)
-        return length
-
-    # use set, save char
-    def lengthOfLongestSubstring2(self, s: str) -> int:
-        if s is None or len(s) == 0:
-            return 0
-        char_set = set()
-        lo = 0
-        length = 0
-        for hi in range(len(s)):
-            if s[hi] in char_set:
-                while lo < hi and s[lo] != s[hi]:
-                    char_set.remove(s[lo])
-                    lo += 1
-                lo += 1
-            else:
-                char_set.add(s[hi])
-            length = max(length, hi - lo + 1)
-        return length
-
-    # use dict, save index
-    def lengthOfLongestSubstring3(self, s: str) -> int:
-        n = len(s)
-        ans = 0
-        # mp stores the current index of a character
-        mp = {}
-
-        i = 0
-        # try to extend the range [i, j]
-        for j in range(n):
-            if s[j] in mp:
-                # i = max(mp[s[j]], i) # if save index + 1
-                i = max(mp[s[j]]+1, i)
-            mp[s[j]] = j
-            ans = max(ans, j - i + 1)
-            # mp[s[j]] = j + 1 # if save index + 1
-
-        return ans
-
-    # use array, save index
-    def lengthOfLongestSubstring4(self, s: str) -> int:
-        chars = [None] * 128
-        left = right = 0
-        ans = 0
-        while right < len(s):
-            r = ord(s[right])
-            index = chars[r]
-            if index != None and index >= left and index < right:
-                left = index + 1
-            chars[r] = right
-
-            ans = max(ans, right - left + 1)
-            right += 1
-        return ans
 
 
 if __name__ == '__main__':

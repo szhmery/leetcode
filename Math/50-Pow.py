@@ -1,38 +1,7 @@
 class Solution:
-    # time limit exceeded
-    def myPow(self, x: float, n: int) -> float:
-        ans = 1
-        if n > 0:
-            while n > 0:
-                ans = ans * x
-                n -= 1
-        elif n == 0:
-            return 1
-        else:
-            x = 1 / x
-            n = abs(n)
-            while n > 0:
-                ans = ans * x
-                n -= 1
-        return ans
-
-    # https://blog.csdn.net/fuxuemingzhu/article/details/82960833
-    # recursive
-    def myPow2(self, x: float, n: int) -> float:
-        if n == 0:
-            return 1
-        if n == 1:
-            return x
-        if n < 0:
-            return 1 / self.myPow2(x, -n)
-        if n % 2 == 1:
-            return x * self.myPow2(x, n - 1)
-        else:
-            cur = self.myPow2(x, n / 2)
-            return cur * cur
-
     # iterative
-    def myPow3(self, x, n):
+    # https://www.bilibili.com/video/BV1W54y1q7CV?from=search&seid=5704309823833009478
+    def myPow(self, x, n):
         """
         :type x: float
         :type n: int
@@ -51,6 +20,21 @@ class Solution:
             x *= x
         return ans
 
+    # https://blog.csdn.net/fuxuemingzhu/article/details/82960833
+    # recursive
+    def myPow2(self, x: float, n: int) -> float:
+        if n == 0:
+            return 1
+        if n == 1:
+            return x
+        if n < 0:
+            return 1 / self.myPow2(x, -n)
+        if n % 2 == 1:
+            return x * self.myPow2(x, n - 1)
+        else:
+            cur = self.myPow2(x, n / 2)
+            return cur * cur
+
 
 if __name__ == '__main__':
     solution = Solution()
@@ -68,7 +52,7 @@ if __name__ == '__main__':
     print(result)
     result = solution.myPow2(2.0, -2)
     print(result)
-    result = solution.myPow3(2.0, 5)
+    result = solution.myPow2(2.0, 5)
     print(result)
-    result = solution.myPow3(2.0, -2)
+    result = solution.myPow2(2.0, -2)
     print(result)

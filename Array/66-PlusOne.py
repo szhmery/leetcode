@@ -2,7 +2,17 @@ from typing import List
 
 
 class Solution:
+    #https://www.bilibili.com/video/BV1gi4y137GW
     def plusOne(self, digits: List[int]) -> List[int]:
+        for i in range(len(digits) - 1, -1, -1):
+            if digits[i] == 9:
+                digits[i] = 0
+            else:
+                digits[i] += 1
+                return digits
+        return [1] + digits
+
+    def plusOne2(self, digits: List[int]) -> List[int]:
         return_digits = digits.copy()
         if digits[len(digits) - 1] + 1 == 10:
             return_digits[len(return_digits) - 1] = 0

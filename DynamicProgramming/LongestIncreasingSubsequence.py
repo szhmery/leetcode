@@ -23,7 +23,7 @@ class Solution:
     # Complexity Analysis
     # Time complexity : O(n^2)  Two loops of n are there.
     # Space complexity : O(n). dp array of size n is used.
-    def lengthOfLIS(self, nums: List[int]) -> int:
+    def lengthOfLIS2(self, nums: List[int]) -> int:
         if len(nums) == 0:
             return 0
         dp = [0] * len(nums)

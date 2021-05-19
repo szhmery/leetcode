@@ -1,4 +1,5 @@
 class Solution:
+    # binary search
     def search(self, lists, target):
         start, end = 0, len(lists) - 1
 

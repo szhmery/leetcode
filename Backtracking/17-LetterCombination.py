@@ -36,9 +36,9 @@ class Solution:
             for j in range(len(string)):
                 if result:
                     for s in result:
-                        t.append(s + string[j])
+                        t.append(s + string[j]) # append the second possible letters to the first one
                 else:
-                    t.append(string[j])
+                    t.append(string[j]) #the first circle, add the first possible letter
             result = t
         return result
 

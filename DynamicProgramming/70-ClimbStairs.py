@@ -2,11 +2,19 @@ import math
 
 
 class Solution:
+    # DP
+    # https://www.bilibili.com/video/BV1ki4y1u7tn
+    def climbStairs(self, n):
+        dp1, dp2 = 1, 2
+        for i in range(n - 1):
+            dp1, dp2 = dp2, dp1 + dp2
+        return dp1
+
     # Brute Force
     # Complexity Analysis
     # Time complexity : O(2^n). Size of recursion tree will be 2^n
     # Space complexity : O(n). The depth of the recursion tree can go upto n.
-    def climbStairs(self, n: int) -> int:
+    def climbStairs_(self, n: int) -> int:
         return self.climb_stair(0, n)
 
     def climb_stair(self, i, n):

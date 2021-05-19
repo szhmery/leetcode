@@ -4,26 +4,12 @@ from typing import List
 
 class Solution:
     # Complexity Analysis
-    # Time complexity: O(N^2), where NN is the length of nums.
-    # We use 2 nested for loops, with each loop iterating through nums.
-    # Space complexity: O(1)
-    # No matter how big the input is, we are only ever using 2 variables: ans and currentSubarray.
-    def maxSubArray(self, nums: List[int]) -> int:
-        max_subarray = -math.inf
-        for i in range(len(nums)):
-            current_subarray = 0
-            for j in range(i, len(nums)):
-                current_subarray += nums[j]
-                max_subarray = max(max_subarray, current_subarray)
-
-        return max_subarray
-
-    # Complexity Analysis
     # Time complexity: O(N), where N is the length of nums.
     # We iterate through every element of nums exactly once.
     # Space complexity: O(1)
     # No matter how long the input is, we are only ever using 2 variables: currentSubarray and maxSubarray.
-    def maxSubArray2(self, nums: List[int]) -> int:
+    # https://www.bilibili.com/video/BV11A41187AR?from=search&seid=3304823974143982280
+    def maxSubArray(self, nums: List[int]) -> int:
         max_subarray = current_subarray = nums[0]
         for num in nums[1:]:
             current_subarray = max(num, current_subarray + num)
@@ -31,7 +17,7 @@ class Solution:
         return max_subarray
 
     # DP
-    def maxSubArray3(self, nums: List[int]) -> int:
+    def maxSubArray2(self, nums: List[int]) -> int:
         memo = [None] * len(nums)
         memo[0] = nums[0]
         max_count = nums[0]
@@ -79,6 +65,22 @@ class Solution:
         # any array - so just call it using the entire input!
         return findBestSubarray(nums, 0, len(nums) - 1)
 
+    """
+    # Complexity Analysis
+    # Time complexity: O(N^2), where NN is the length of nums.
+    # We use 2 nested for loops, with each loop iterating through nums.
+    # Space complexity: O(1)
+    # No matter how big the input is, we are only ever using 2 variables: ans and currentSubarray.
+    def maxSubArray(self, nums: List[int]) -> int:
+        max_subarray = -math.inf
+        for i in range(len(nums)):
+            current_subarray = 0
+            for j in range(i, len(nums)):
+                current_subarray += nums[j]
+                max_subarray = max(max_subarray, current_subarray)
+
+        return max_subarray
+    """
 
 if __name__ == '__main__':
     solution = Solution()

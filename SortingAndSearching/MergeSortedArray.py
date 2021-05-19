@@ -2,20 +2,9 @@ from typing import List
 
 
 class Solution:
-    def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
-        """
-        Do not return anything, modify nums1 in-place instead.
-        """
-        if m == 0:
-            nums1[m:] = nums2.copy()
-            return
-        if n == 0:
-            return
-        for i in range(n):
-            nums1[m+i] = nums2[i]
-        nums1.sort()
 
-    def merge2(self, nums1, m, nums2, n):
+
+    def merge(self, nums1, m, nums2, n):
         """
         :type nums1: List[int]
         :type m: int
@@ -42,5 +31,5 @@ if __name__ == '__main__':
     print(nums1)
     print(nums2)
     solution = Solution()
-    solution.merge2(nums1, m, nums2, n)
+    solution.merge(nums1, m, nums2, n)
     print(nums1)

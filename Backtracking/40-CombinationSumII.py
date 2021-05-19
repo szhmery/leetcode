@@ -26,6 +26,8 @@ class Solution:
                     element.pop()
                     counter[num] += 1
 
+    # https://leetcode.com/problems/combination-sum-ii/solution/
+    # Backtracking with Counters
     def combinationSum2_2(self, candidates: List[int], target: int) -> List[List[int]]:
 
         def backtrack(comb, remain, curr, counter, results):
@@ -64,7 +66,7 @@ class Solution:
 
         return results
 
-
+    #  Backtracking with Index
     def combinationSum2_3(self, candidates: List[int], target: int) -> List[List[int]]:
 
         def backtrack(comb, remain, curr, results):

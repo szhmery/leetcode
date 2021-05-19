@@ -2,6 +2,8 @@ from typing import List
 from collections import Counter
 
 class Solution:
+    # https://leetcode.com/problems/permutations-ii/solution/
+    # Backtracking with Groups of Numbers
     def permuteUnique(self, nums: List[int]) -> List[List[int]]:
         ans = []
         self.helper(nums, [], Counter(nums), ans)

@@ -25,6 +25,16 @@ class Solution:
         self.last = root
         return self.isValidBST(root.right)
 
+    # https://www.bilibili.com/video/BV1Vb411V74h?from=search&seid=10476592804165224680
+    def isValidBST2(self, root: TreeNode) -> bool:
+        def helper(root, minval=-float('inf'), maxval=float('inf')):
+            if root is None:
+                return True
+            if not minval < root.val < maxval:
+                return False
+            return helper(root.left, minval, root.val) and helper(root.right, root.val, maxval)
+
+        return helper(root)
 
 if __name__ == '__main__':
     root = TreeNode(1)
@@ -37,4 +47,7 @@ if __name__ == '__main__':
     PrintBST.printBST(root)
     solution = Solution()
     result = solution.isValidBST(root)
+    print('Is valid BST:{}'.format(result))
+
+    result = solution.isValidBST2(root)
     print('Is valid BST:{}'.format(result))

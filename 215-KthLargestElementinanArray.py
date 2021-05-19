@@ -48,9 +48,6 @@ class Solution:
         return high
 
 
-
-
-
 if __name__ == "__main__":
     solution = Solution()
     nums = [3, 2, 1, 5, 6, 4]

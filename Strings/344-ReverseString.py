@@ -13,8 +13,12 @@ class Solution:
             # s[len(s)-1-k] = temp
             s[k], s[len(s) - 1 - k] = s[len(s) - 1 - k], s[k]
 
+    # https://leetcode.com/problems/reverse-string/solution/
     def reverseString_answer(self, s: List[str]) -> None:
-        s.reverse()
+        left, right = 0, len(s) - 1
+        while left < right:
+            s[left], s[right] = s[right], s[left]
+            left, right = left + 1, right - 1
 
 
 if __name__ == "__main__":

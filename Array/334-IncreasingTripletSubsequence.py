@@ -21,6 +21,7 @@ class Solution:
                     return True
         return False
 
+    # https://www.bilibili.com/video/BV1Kr4y1F7m9?from=search&seid=3494524588464032206
     def increasingTriplet3(self, nums: List[int]) -> bool:
         m1 = m2 = math.inf
         for num in nums:

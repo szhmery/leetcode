@@ -2,6 +2,7 @@ from typing import List
 
 
 class Solution:
+    # binary search
     def searchInsert(self, nums: List[int], target: int) -> int:
         left = 0
         right = len(nums) - 1

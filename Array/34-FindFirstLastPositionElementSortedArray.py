@@ -2,6 +2,7 @@ from typing import List
 import bisect
 
 class Solution:
+    # binary search
     def searchRange(self, nums: List[int], target: int) -> List[int]:
         left = self.lower_bound(nums, target)
         right = self.higher_bound(nums, target)

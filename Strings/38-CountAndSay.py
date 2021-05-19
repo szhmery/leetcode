@@ -1,27 +1,20 @@
 class Solution:
+    # https://leetcode.com/problems/count-and-say/discuss/1207074/C%2B%2B-or-Faster-than-100
     def countAndSay(self, n: int) -> str:
         if n == 1:
-            return str(1)
-        if n > 1:
-            number = self.countAndSay(n - 1)
-            num_string = number
-            length = len(num_string)
-            count = 1
-            num = num_string[0]
-            return_str = ''
-            if length == 1:
-                return str(count) + num
-            else:
-                for i in range(1, len(num_string)):
-                    if num_string[i] == num:
-                        count += 1
-                        continue
-                    else:
-                        return_str += str(count) + num
-                        num = num_string[i]
-                        count = 1
-                return_str += str(count) + num
-                return return_str
+            return "1"
+        return self.say(self.countAndSay(n - 1))
+
+    def say(self, number):
+        count = 1
+        return_str = ''
+
+        for i in range(len(number)):
+            if i == len(number) - 1 or number[i] != number[i+1]:
+                return_str += str(count) + number[i]
+                count = 0
+            count += 1
+        return return_str
 
     def countAndSay2(self, n):
         """
@@ -49,6 +42,7 @@ class Solution:
         # add a delimiter for the next sequence
         nextSeq.append('E')
         return self.nextSequence(n - 1, nextSeq)
+
 
 if __name__ == '__main__':
     solution = Solution()

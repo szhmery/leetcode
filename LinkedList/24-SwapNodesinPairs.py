@@ -6,30 +6,6 @@ class ListNode:
 
 
 class Solution:
-    # iterate
-    def swapPairs(self, head: ListNode) -> ListNode:
-        if head is None or head.next is None:
-            return head
-        dummy = ListNode()
-        dummy.next = head
-        first = head
-        second = head.next
-        pre = dummy
-        while first and second:
-            if second.next:
-                tmp_first = second.next
-                tmp_second = second.next.next if second.next.next else None
-            else:
-                tmp_first = None
-                tmp_second = None
-            first.next = second.next
-            second.next = first
-            pre.next = second
-            pre = first
-            first = tmp_first
-            second = tmp_second
-        return dummy.next
-
     # recursive
     def swapPairs2(self, head: ListNode) -> ListNode:
         if head is None or head.next is None:
@@ -39,11 +15,29 @@ class Solution:
         t.next = head
         return t
 
+    # iterate
+    # https://www.bilibili.com/video/BV1ih411f7YK?from=search&seid=9650532595680486726
+    def swapPairs(self, head: ListNode) -> ListNode:
+        if head is None or head.next is None:
+            return head
+        dummy = ListNode()
+        dummy.next = head
+        res = dummy
+        while dummy.next and dummy.next.next:
+            first = dummy.next
+            second = dummy.next.next
+            first.next = second.next
+            second.next = first
+            dummy.next = second
+            dummy = dummy.next.next
+        return res.next
+
+
 if __name__ == '__main__':
     l1 = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 
     solution = Solution()
-    newList = solution.swapPairs(l1)
+    newList = solution.swapPairs2(l1)
     print("\nAfter:")
     tmp_list = newList
     while tmp_list != None:
