@@ -29,6 +29,7 @@ class Solution:
               self.search(board, word, idx + 1, i, j + 1, visited_board)
         visited_board[i][j] = False
         return res
+
     # DFS, don't use visited
     def exist2(self, board: List[List[str]], word: str) -> bool:
         def search2(board, word, idx, i, j):

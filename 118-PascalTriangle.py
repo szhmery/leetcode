@@ -5,22 +5,33 @@ class Solution:
     def generate(self, n: int) -> List[List[int]]:
         # 方法1
         res = []
-        for i in range(numRows):
-            now = [1] * (i + 1)  # 小技巧，开始直接设置为全1
+        for i in range(n):
+            row = [1] * (i + 1)  # 小技巧，开始直接设置为全1
             for j in range(1, i):
-                now[j] = res[i - 1][j - 1] + res[i - 1][j]
-            res.append(now)
+                row[j] = res[i - 1][j - 1] + res[i - 1][j]
+            res.append(row)
+        return res
+
+    #https://leetcode.com/problems/pascals-triangle/solution/
+    # DP
+    def generate2(self, n: int) -> List[List[int]]:
+        res = []
+        for i in range(n):
+            row = [None] * (i + 1)
+            row[0], row[-1] = 1, 1
+            for j in range(1, len(row) - 1):
+                row[j] = res[i-1][j-1] + res[i-1][j]
+            res.append(row)
         return res
 
 
-    def generate2(self, n: int) -> List[List[int]]:
+    def generate3(self, n: int) -> List[List[int]]:
         zong = [[1]]
         for i in range(1, n):  # 略过n==1时
 
             tt = zong[i - 1]
             # https://blog.csdn.net/puspos/article/details/102575182
             zong.append(list(map(lambda x, y: x + y, [0] + tt, tt + [0])))
-
 
         return zong[:n]  # [:n] == if n==0: return []
 
@@ -54,3 +65,6 @@ if __name__ == '__main__':
     print(result)
     result = solution.generate2(numRows)
     print(result)
+    result = solution.generate3(numRows)
+    print(result)
+

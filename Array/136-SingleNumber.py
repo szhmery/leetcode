@@ -3,6 +3,17 @@ from typing import List
 
 
 class Solution:
+    # https://leetcode.com/problems/single-number/solution/
+    def singleNumber_answer4(self, nums):
+        """
+        :type nums: List[int]
+        :rtype: int
+        """
+        a = 0
+        for i in nums:
+            a ^= i
+        return a
+
     def singleNumber(self, nums: List[int]) -> int:
         for num in nums:
             if nums.count(num) == 1:
@@ -37,15 +48,6 @@ class Solution:
         """
         return 2 * sum(set(nums)) - sum(nums)
 
-    def singleNumber_answer4(self, nums):
-        """
-        :type nums: List[int]
-        :rtype: int
-        """
-        a = 0
-        for i in nums:
-            a ^= i
-        return a
 
 
 if __name__ == "__main__":

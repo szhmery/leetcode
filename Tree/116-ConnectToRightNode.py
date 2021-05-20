@@ -11,7 +11,7 @@ class Node:
         self.next = next
 
 class Solution:
-    # Breadth first search - BFD
+    # Breadth first search - BFS
     # space O(n)
     # time O(n)
     def connect(self, root: 'Node') -> 'Node':

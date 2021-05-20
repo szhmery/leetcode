@@ -36,6 +36,7 @@ class Solution:
 
         return helper(root)
 
+
 if __name__ == '__main__':
     root = TreeNode(1)
     root.left = TreeNode(5)

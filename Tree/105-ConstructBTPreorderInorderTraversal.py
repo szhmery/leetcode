@@ -12,23 +12,31 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
-        preorder_index = 0
-        inorder_index_dict = {}
-        for index, value in enumerate(inorder):
-            inorder_index_dict[value] = index
-
-        def ArrayToTree(left, right):
+        def array_to_tree(left, right):
             nonlocal preorder_index
-            if left > right:
-                return None
-            node_value = preorder[preorder_index]
-            root = TreeNode(node_value)
+            # if there are no elements to construct the tree
+            if left > right: return None
+
+            # select the preorder_index element as the root and increment it
+            root_value = preorder[preorder_index]
+            root = TreeNode(root_value)
+
             preorder_index += 1
-            root.left = ArrayToTree(left, inorder_index_dict[node_value] - 1)
-            root.right = ArrayToTree(inorder_index_dict[node_value] + 1, right)
+
+            # build left and right subtree
+            # excluding inorder_index_map[root_value] element because it's the root
+            root.left = array_to_tree(left, inorder_index_map[root_value] - 1)
+            root.right = array_to_tree(inorder_index_map[root_value] + 1, right)
+
             return root
 
-        return ArrayToTree(0, len(preorder) - 1)
+        preorder_index = 0
+        # build a hashmap to store value -> its index relations
+        inorder_index_map = {}
+        for index, value in enumerate(inorder):
+            inorder_index_map[value] = index
+
+        return array_to_tree(0, len(preorder) - 1)
 
 
 if __name__ == '__main__':

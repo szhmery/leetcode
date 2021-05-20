@@ -2,6 +2,34 @@ from typing import List
 
 
 class Solution:
+    # https://leetcode.com/problems/best-time-to-buy-and-sell-stock-ii/solution/
+    # Simple One Pass
+    def maxProfit(self, prices: List[int]) -> int:
+        max_profit = 0
+
+        for i in range(len(prices) - 1):
+            if prices[i] < prices[i + 1]:
+                max_profit += prices[i + 1] - prices[i]
+        return max_profit
+
+    # Peak Valley Approach
+    def maxProfit2(self, prices: List[int]) -> int:
+        vally = prices[0]
+        peak = prices[0]
+        max_profit = 0
+        i = 0
+        while i < len(prices) - 1:
+            while i < len(prices) - 1 and prices[i] >= prices[i + 1]:
+                i += 1
+            vally = prices[i]
+            while i < len(prices) - 1 and prices[i] <= prices[i + 1]:
+                i += 1
+            peak = prices[i]
+            max_profit = max_profit + peak - vally
+
+        return max_profit
+
+    """
     def maxProfit(self, prices: List[int]) -> int:
         next_buy_point = 0
         max_profit = 0
@@ -31,30 +59,10 @@ class Solution:
                         return max_profit
                 continue
         return max_profit
+        """
 
-    def maxProfitAnswer(self, prices: List[int]) -> int:
-        vally = prices[0]
-        peak = prices[0]
-        max_profit = 0
-        i = 0
-        while i < len(prices) - 1:
-            while i < len(prices) - 1 and prices[i] >= prices[i + 1]:
-                i += 1
-            vally = prices[i]
-            while i < len(prices) - 1 and prices[i] <= prices[i + 1]:
-                i += 1
-            peak = prices[i]
-            max_profit = max_profit + peak - vally
 
-        return max_profit
 
-    def maxProfitAnswer2(self, prices: List[int]) -> int:
-        max_profit = 0
-
-        for i in range(len(prices)-1):
-            if prices[i] < prices[i+1]:
-                max_profit += prices[i+1] - prices[i]
-        return max_profit
 
 
 if __name__ == "__main__":

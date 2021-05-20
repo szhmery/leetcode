@@ -15,7 +15,7 @@ class Solution:
 
     def helper(self, s, ans, curr, low):
         if low == len(s):
-            ans.append(curr[::])
+            ans.append(curr[:])
             return
         n = len(s)
         for i in range(low, n):
