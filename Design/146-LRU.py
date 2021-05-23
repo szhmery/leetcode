@@ -46,7 +46,7 @@ class LRUCache2:
         if key in self.cache:
             self.queue.remove(key)
         elif len(self.queue) == self.capacity:
-            del self.cache[self.queue.pop(-1)]
+            del self.cache[self.queue.pop(-1)] # pop the first item
 
         self.cache[key] = value
         self.queue.insert(0, key)
