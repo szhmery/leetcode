@@ -2,6 +2,41 @@ from typing import List
 
 
 class Solution:
+    def fourSum2(self, nums: List[int], target: int) -> List[List[int]]:
+        res = []
+        if len(nums) < 4:
+            return res
+        nums.sort()
+        for i in range(len(nums) - 3):
+            if i > 0 and nums[i] == nums[i - 1]:  # skip duplicates
+                continue
+
+            for j in range(i + 1, len(nums) - 2):
+                if j > i + 1 and nums[j] == nums[j - 1]:  # skip duplicates
+                    continue
+                k = j + 1
+                l = len(nums) - 1
+                while k < l:
+                    sum = nums[i] + nums[j] + nums[k] + nums[l]
+                    if sum < target:
+                        k += 1
+                        while k < l and nums[k] == nums[k - 1]:
+                            k += 1
+                    elif sum > target:
+                        l -= 1
+                        while k < l and nums[l] == nums[l + 1]:
+                            l -= 1
+                    else:
+                        res.append([nums[i], nums[j], nums[k], nums[l]])
+                        k += 1
+                        l -= 1
+                        while k < l and nums[k] == nums[k - 1]:
+                            k += 1
+                        while k < l and nums[l] == nums[l + 1]:
+                            l -= 1
+
+        return res
+
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         def kSum(nums: List[int], target: int, k: int) -> List[List[int]]:
             res = []
@@ -39,4 +74,6 @@ if __name__ == "__main__":
     nums = [1, 0, -1, 0, -2, 2]
     target = 0
     result = solution.fourSum(nums, target)
+    print(result)
+    result = solution.fourSum2(nums, target)
     print(result)

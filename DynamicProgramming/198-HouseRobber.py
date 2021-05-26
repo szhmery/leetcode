@@ -15,6 +15,7 @@ class Solution:
 
         return dp[len(nums) - 1]
 
+    # https://www.bilibili.com/video/BV1gZ4y1N75c
     def rob2(self, nums: List[int]) -> int:
         cur_max = pre_max = 0
 

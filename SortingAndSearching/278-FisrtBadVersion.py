@@ -8,6 +8,7 @@ def isBadVersion(version):
         return False
 
 class Solution:
+    # binary search
     def firstBadVersion(self, n):
         """
         :type n: int

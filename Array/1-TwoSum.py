@@ -2,6 +2,15 @@ from typing import List
 
 
 class Solution:
+    def twoSum3(self, nums: List[int], target: int) -> List[int]:
+        nums_dict = {}
+        for i in range(len(nums)):
+            another = target - nums[i]
+            if another in nums_dict.keys():
+                return [nums_dict[another], i]
+            else:
+                nums_dict.update({nums[i]: i})
+
     def twoSum(self, nums: List[int], target: int) -> List[int]:
         result_list = []
         for i in range(len(nums)):
@@ -19,14 +28,7 @@ class Solution:
             if another in nums_dict.keys() and i != nums_dict[another]:
                 return [i, nums_dict[another]]
 
-    def twoSum3(self, nums: List[int], target: int) -> List[int]:
-        nums_dict = {}
-        for i in range(len(nums)):
-            another = target - nums[i]
-            if another in nums_dict.keys():
-                return [nums_dict[another], i]
-            else:
-                nums_dict.update({nums[i]: i})
+
 
 
 if __name__ == "__main__":

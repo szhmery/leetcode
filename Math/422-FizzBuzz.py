@@ -2,13 +2,14 @@ from typing import List
 
 
 class Solution:
+    # https://www.bilibili.com/video/BV1tD4y1m76j
     # Complexity Analysis
     # Time Complexity: O(N)
     # Space Complexity: O(1)
     def fizzBuzz(self, n: int) -> List[str]:
         result = []
         for i in range(1, n + 1):
-            if i % 3 == 0 and i % 5 == 0:
+            if i % 15 == 0:
                 result.append("FizzBuzz")
             elif i % 3 == 0:
                 result.append("Fizz")

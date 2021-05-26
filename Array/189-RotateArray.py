@@ -2,8 +2,27 @@ from typing import List
 
 
 class Solution:
-    # https://leetcode.com/problems/rotate-array/solution/
+    # https://www.bilibili.com/video/BV1N541177Bk?from=search&seid=1830710312737531822
+    # Using Reverse
+    # Time complexity: O(n).
+    # Space complexity: O(1).
     def rotate(self, nums: List[int], k: int) -> None:
+        def reverse(nums, lo, hi):
+            while lo < hi:
+                nums[lo], nums[hi] = nums[hi], nums[lo]
+                lo += 1
+                hi -= 1
+
+        if len(nums) == 1:
+            return
+        n = len(nums)
+        k %= n
+        reverse(nums, 0, n - 1)
+        reverse(nums, 0, k - 1)
+        reverse(nums, k, n - 1)
+
+    # https://leetcode.com/problems/rotate-array/solution/
+    def rotate4(self, nums: List[int], k: int) -> None:
         """
         Do not return anything, modify nums in-place instead.
         """
@@ -51,23 +70,7 @@ class Solution:
                     break
             start += 1
 
-    # https://www.bilibili.com/video/BV1N541177Bk?from=search&seid=1830710312737531822
-    # Using Reverse
-    # Time complexity: O(n).
-    # Space complexity: O(1).
-    def rotate4(self, nums: List[int], k: int) -> None:
-        def reverse(nums, lo, hi):
-            while lo < hi:
-                nums[lo], nums[hi] = nums[hi], nums[lo]
-                lo += 1
-                hi -= 1
-        if len(nums) == 1:
-            return
-        n = len(nums)
-        k %= n
-        reverse(nums, 0, n - 1)
-        reverse(nums, 0, k - 1)
-        reverse(nums, k, n - 1)
+
 
 
 if __name__ == "__main__":

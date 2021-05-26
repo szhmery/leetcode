@@ -12,9 +12,9 @@ class TreeNode:
 class Solution:
     def inorderTraversal(self, root: 'TreeNode') -> 'List[int]':
         """利用堆栈实现树的中序遍历"""
-        result = []
+        ans = []
         if root is None:
-            return result
+            return ans
         myStack = []
         node = root
         while node or myStack:
@@ -22,21 +22,21 @@ class Solution:
                 myStack.append(node)
                 node = node.left
             node = myStack.pop()  # while结束表示当前节点node为空，即前一个节点没有左子树了
-            result.append(node.val)
+            ans.append(node.val)
             node = node.right  # 开始查看它的右子树
-        return result
+        return ans
 
     def inorderTraversal2(self, root: 'TreeNode') -> 'List[int]':
-        def inorderTraversal_recursion(root: 'TreeNode') -> 'List[int]':
+        def inorder(root: 'TreeNode') -> 'List[int]':
             if root is None:
                 return
 
-            inorderTraversal_recursion(root.left)
+            inorder(root.left)
             ans.append(root.val)
-            inorderTraversal_recursion(root.right)
+            inorder(root.right)
             return
         ans = []
-        inorderTraversal_recursion(root)
+        inorder(root)
         return ans
 
 

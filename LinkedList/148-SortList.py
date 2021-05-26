@@ -3,7 +3,11 @@ class ListNode:
     def __init__(self, val=0, next=None):
         self.val = val
         self.next = next
+
+
 class Solution:
+    # https://www.bilibili.com/video/BV1VK411A7Gm
+    # (n logn) time and O(1) memory
     def merge(self, h1, h2):
         dummy = tail = ListNode()
         while h1 and h2:
@@ -17,6 +21,7 @@ class Solution:
         tail.next = h1 or h2
         return dummy.next
 
+    # fast and slow pointer
     def sortList(self, head: ListNode) -> ListNode:
         if not head or not head.next:
             return head
@@ -29,3 +34,23 @@ class Solution:
             fast = fast.next.next
         pre.next = None
         return self.merge(self.sortList(head), self.sortList(slow))
+
+
+if __name__ == '__main__':
+    l1 = ListNode(-1, ListNode(5, ListNode(3, ListNode(4, ListNode(0)))))
+
+    solution = Solution()
+    newList = solution.sortList(l1)
+    print("\nAfter:")
+    tmp_list = newList
+    while tmp_list != None:
+        print(str(tmp_list.val), end='->')
+        tmp_list = tmp_list.next
+    l1 = ListNode(4, ListNode(2, ListNode(1, ListNode(3))))
+
+    newList = solution.sortList(l1)
+    print("\nAfter:")
+    tmp_list = newList
+    while tmp_list != None:
+        print(str(tmp_list.val), end='->')
+        tmp_list = tmp_list.next

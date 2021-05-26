@@ -6,15 +6,16 @@ class ListNode:
 
 
 class Solution:
+    # https://www.bilibili.com/video/BV1vt4y1y7eM
     def deleteNode(self, node):
         """
         :type node: ListNode
         :rtype: void Do not return anything, modify node in-place instead.
         """
-        node_after = node.next
+        # node_after = node.next
         node.val = node.next.val
         node.next = node.next.next
-        node_after.next = None
+        # node_after.next = None
 
 
 if __name__ == '__main__':

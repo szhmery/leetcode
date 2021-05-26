@@ -3,22 +3,6 @@ import math
 
 
 class Solution:
-    # brute force
-    # Complexity Analysis
-    # Time complexity : O(2^n). Size of recursion tree will be 2^n
-    # Space complexity : O(n^2). memo array of size n∗n is used.
-    # time limit exceed
-    def lengthOfLIS(self, nums: List[int]) -> int:
-        return self.sub_lengthOfLIS(nums, float('-inf'), 0)
-
-    def sub_lengthOfLIS(self, nums, prev, curpos):
-        if curpos == len(nums):
-            return 0
-        taken = 0
-        if nums[curpos] > prev:
-            taken = 1 + self.sub_lengthOfLIS(nums, nums[curpos], curpos + 1)
-        untaken = self.sub_lengthOfLIS(nums, prev, curpos + 1)
-        return max(taken, untaken)
     # DP
     # Complexity Analysis
     # Time complexity : O(n^2)  Two loops of n are there.
@@ -37,6 +21,24 @@ class Solution:
             dp[i] = maxval + 1
             maxans = max(maxans, dp[i])
         return maxans
+
+    # brute force
+    # Complexity Analysis
+    # Time complexity : O(2^n). Size of recursion tree will be 2^n
+    # Space complexity : O(n^2). memo array of size n∗n is used.
+    # time limit exceed
+    def lengthOfLIS(self, nums: List[int]) -> int:
+        return self.sub_lengthOfLIS(nums, float('-inf'), 0)
+
+    def sub_lengthOfLIS(self, nums, prev, curpos):
+        if curpos == len(nums):
+            return 0
+        taken = 0
+        if nums[curpos] > prev:
+            taken = 1 + self.sub_lengthOfLIS(nums, nums[curpos], curpos + 1)
+        untaken = self.sub_lengthOfLIS(nums, prev, curpos + 1)
+        return max(taken, untaken)
+
 
 
 if __name__ == '__main__':

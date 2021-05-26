@@ -6,7 +6,21 @@ class ListNode:
 
 
 class Solution:
+    # https://www.bilibili.com/video/BV1g4411z7uN?from=search&seid=2204095547336912690
     def reverseList(self, head: ListNode) -> ListNode:
+        if head is None:
+            return head
+        cur = head
+        pre = None
+        while cur:
+            next = cur.next
+            cur.next = pre
+            pre = cur
+            cur = next
+        return pre
+
+
+    def reverseList2(self, head: ListNode) -> ListNode:
         new_head = None
         node = head
         last_node = head
