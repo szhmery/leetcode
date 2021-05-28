@@ -1,5 +1,5 @@
 from typing import List
-
+from Tree.PrintBST import PrintBST
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -31,3 +31,17 @@ class Solution:
         self.DFS(node.right, num - node.val, res, ans)
         res.pop()
         return
+
+if __name__ == '__main__':
+    root = TreeNode(1)
+    root.right = TreeNode(3)
+    a = TreeNode(2)
+    root.left = a
+    a.left = TreeNode(4)
+    a.right = TreeNode(5)
+
+    PrintBST.printBST(root)
+    solution = Solution()
+    result = solution.pathSum(root, 8)
+    print('BT sum path:{}'.format(result))
+
