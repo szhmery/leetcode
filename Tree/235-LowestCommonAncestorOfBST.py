@@ -17,16 +17,18 @@ class Solution:
             else:
                 return node
 
+
 if __name__ == '__main__':
-    root = TreeNode(1)
-    root.left = TreeNode(5)
-    a = TreeNode(4)
+    root = TreeNode(3)
+    b = TreeNode(1)
+    root.left = b
+    a = TreeNode(5)
     root.right = a
-    a.left = TreeNode(3)
+    a.left = TreeNode(4)
     a.right = TreeNode(6)
 
     PrintBST.printBST(root)
     solution = Solution()
-    result = solution.isValidBST(root)
-    print('Is valid BST:{}'.format(result))
+    result = solution.lowestCommonAncestor(root, a, b)
+    print('Is valid BST:{}'.format(result.val))
 
