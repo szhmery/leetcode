@@ -1,5 +1,24 @@
 class Solution:
+    # https://www.bilibili.com/video/BV1Qy4y167Ax?from=search&seid=13705820408455451260
     def calculate(self, s: str) -> int:
+        stack, cur, sign = [], 0, '+'
+        for char in s + '+':
+            if char.isdigit():
+                cur = cur * 10 + int(char)
+            else:
+                if sign == '+':
+                    stack.append(cur)
+                elif sign == '-':
+                    stack.append(-cur)
+                elif sign == '*':
+                    stack.append(stack.pop() * cur)
+                elif sign == '/':
+                    stack.append(int(stack.pop() / cur))
+                sign = char
+                cur = 0
+        return sum(stack)
+
+    def calculate2(self, s: str) -> int:
         def is_digit(char):
             if ord('0') <= ord(char) <= ord('9'):
                 return True
@@ -36,7 +55,7 @@ class Solution:
             # stack.pop()
         return res
 
-    def calculate2(self, s: str) -> int:
+    def calculate3(self, s: str) -> int:
 
         n = len(s)
         if n == 0:

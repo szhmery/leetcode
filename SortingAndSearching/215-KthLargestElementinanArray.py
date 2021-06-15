@@ -1,5 +1,5 @@
-from typing import List
 import random
+from typing import List
 
 
 class Solution:
@@ -55,7 +55,7 @@ if __name__ == "__main__":
     result = solution.findKthLargest2(nums, k)
     print(result)
 
-    nums = [3,2,3,1,2,4,5,5,6]
+    nums = [3, 2, 3, 1, 2, 4, 5, 5, 6]
     k = 4
     result = solution.findKthLargest2(nums, k)
     print(result)

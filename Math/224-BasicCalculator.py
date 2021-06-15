@@ -114,9 +114,13 @@ class Solution:
 
         # Evaluate any left overs in the stack.
         return self.evaluate_expr(stack)
+
+
 if __name__ == '__main__':
     solution = Solution()
     s = "(1+(4+5+2)-3)+(6+8)"
     result = solution.calculate(s)
     print(result)
 
+    result = solution.calculate2(s)
+    print(result)
