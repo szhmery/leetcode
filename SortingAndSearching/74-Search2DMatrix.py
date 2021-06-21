@@ -69,10 +69,42 @@ class Solution:
                 left = mid + 1
         return False
 
+    def searchMatrix3(self, matrix: List[List[int]], target: int) -> bool:
+        R = len(matrix)
+        if R == 0:
+            return False
+
+        C = len(matrix[0])
+        if C == 0:
+            return False
+        if matrix[0][0] > target or matrix[R - 1][C - 1] < target:
+            return False
+
+        l = 0
+        r = R * C - 1
+        while l <= r:
+            mid = l + (r - l) // 2
+            element = matrix[mid // C][mid % C]
+            if element == target:
+                return True
+            elif element < target:
+                l = mid + 1
+            else:
+                r = mid - 1
+        return False
+
 
 if __name__ == "__main__":
     solution = Solution()
     matrix = [[1, 3, 5, 7], [10, 11, 16, 20], [23, 30, 34, 60]]
     target = 3
     result = solution.searchMatrix(matrix, target)
+    print(result)
+    result = solution.searchMatrix2(matrix, target)
+    print(result)
+    matrix = [[1, 3]]
+    target = 1
+    result = solution.searchMatrix3(matrix, target)
+    print(result)
+    result = solution.searchMatrix2(matrix, target)
     print(result)

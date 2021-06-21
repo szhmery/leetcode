@@ -2,7 +2,7 @@ class Solution:
     def fib(self, n: int) -> int:
         if n <= 1:
             return n
-        return self.fib(n-1) + self.fib(n-2)
+        return self.fib(n - 1) + self.fib(n - 2)
 
     def fib2(self, n: int) -> int:
         if n <= 1:
@@ -14,6 +14,7 @@ class Solution:
         for i in range(3, n + 1):
             pre, cur = cur, pre + cur
         return cur
+
 
 if __name__ == "__main__":
     solution = Solution()

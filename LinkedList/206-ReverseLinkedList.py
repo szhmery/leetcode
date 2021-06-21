@@ -6,8 +6,19 @@ class ListNode:
 
 
 class Solution:
-    # https://www.bilibili.com/video/BV1g4411z7uN?from=search&seid=2204095547336912690
+    # recursive
     def reverseList(self, head: ListNode) -> ListNode:
+        if not head or not head.next:
+            return head
+
+        p = self.reverseList(head.next)
+        head.next.next = head
+        head.next = None
+        return p
+
+
+    # https://www.bilibili.com/video/BV1g4411z7uN?from=search&seid=2204095547336912690
+    def reverseList2(self, head: ListNode) -> ListNode:
         if head is None:
             return head
         cur = head

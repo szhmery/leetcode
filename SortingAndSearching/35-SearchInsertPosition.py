@@ -6,7 +6,7 @@ class Solution:
     def searchInsert(self, nums: List[int], target: int) -> int:
         left = 0
         right = len(nums) - 1
-        while left <= right:
+        while left <= right: # use =, return left, because left has already plus 1
             mid = left + (right - left)//2
             if target == nums[mid]:
                 return mid

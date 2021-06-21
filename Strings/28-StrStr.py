@@ -20,7 +20,7 @@ class Solution:
                 n = 0
         return -1
 
-    # window sliding
+    #sliding window
     def strStr2(self, haystack: str, needle: str) -> int:
         n = len(haystack)
         m = len(needle)
@@ -101,6 +101,7 @@ class Solution:
                 else:
                     prefix = lps[prefix - 1]
         return lps
+
 
 if __name__ == '__main__':
     solution = Solution()

@@ -18,6 +18,18 @@ class Solution:
                 return True
         return False
 
+    def hasCycle2(self, head: ListNode) -> bool:
+        if not head:
+            return False
+        s = head
+        f = head
+        while f and f.next:
+            s = s.next
+            f = f.next.next
+            if s == f:
+                return True
+        return False
+
 
 if __name__ == '__main__':
     rawList = ListNode(1)
@@ -32,7 +44,10 @@ if __name__ == '__main__':
 
     solution = Solution()
     result = solution.hasCycle(rawList)
-    print("\nHas cycle:", end=' ')
+    print("\nmethod 1 Has cycle:", end=' ')
+    print(result)
+    result = solution.hasCycle2(rawList)
+    print("\nmethod 2 Has cycle:", end=' ')
     print(result)
 
     rawList = ListNode(1)
@@ -44,6 +59,8 @@ if __name__ == '__main__':
     b.next = rawList
 
     solution = Solution()
-    result = solution.hasCycle(rawList)
-    print("\nHas cycle2:", end=' ')
+    print("\nmethod 1 Has cycle:", end=' ')
+    print(result)
+    result = solution.hasCycle2(rawList)
+    print("\nmethod 2 Has cycle:", end=' ')
     print(result)
