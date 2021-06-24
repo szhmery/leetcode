@@ -43,3 +43,10 @@ if __name__ == '__main__':
     print("After:")
     print(solution.removeElement(nums, 2))
     print(nums)
+
+    nums = [1, 1, 2]
+    print("Before:")
+    print(nums)
+    print("After:")
+    print(solution.removeElement2(nums, 2))
+    print(nums)

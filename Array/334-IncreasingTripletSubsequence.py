@@ -10,7 +10,7 @@ class Solution:
                         return True
 
         return False
-
+    # dp
     def increasingTriplet2(self, nums: List[int]) -> bool:
         dp = [1] * len(nums)
         for i in range(len(nums)):
