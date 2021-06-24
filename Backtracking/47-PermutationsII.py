@@ -46,6 +46,7 @@ class Solution:
 
         return results
 
+
 if __name__ == '__main__':
     solution = Solution()
     n = [1, 2, 1]

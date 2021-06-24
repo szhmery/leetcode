@@ -10,6 +10,7 @@ class TreeNode:
 
 
 class Solution:
+    # BFS
     def levelOrder(self, root: TreeNode) -> 'List[List[int]]':
         res = []
         if root is None:
@@ -28,6 +29,7 @@ class Solution:
 
         return res
 
+    # recursion
     def levelOrder2(self, root: TreeNode) -> 'List[List[int]]':
         res = []
         self.preOrder(root, 0, res)
@@ -41,6 +43,7 @@ class Solution:
             res[level].append(node.val)
             self.preOrder(node.left, level + 1, res)
             self.preOrder(node.right, level + 1, res)
+
 
 if __name__ == '__main__':
     root = TreeNode(3)

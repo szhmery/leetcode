@@ -47,7 +47,7 @@ class Solution:
     # Divide and Conquer
     # Time complexity : O(nlgn)
     # Space complexity : O(nlgn)
-    def majorityElement5(self, nums, lo=0, hi=None):
+    def majorityElement5(self, nums):
         def majority_element_rec(lo, hi):
             # base case; the only element in an array of size 1 is the majority
             # element.
@@ -97,4 +97,7 @@ if __name__ == '__main__':
     print(result)
     result = solution.majorityElement4(tokens)
     print(result)
+    result = solution.majorityElement5(tokens)
+    print(result)
+
 

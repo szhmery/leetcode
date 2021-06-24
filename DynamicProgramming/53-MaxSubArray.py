@@ -26,10 +26,11 @@ class Solution:
             max_count = max(max_count, memo[i])
         return max_count
 
+    # divide and conquer
     # Complexity Analysis
     # Time complexity: O(N⋅logN), where N is the length of nums.
     # Space complexity: O(logN), where N is the length of nums.
-    def maxSubArray4(self, numbs: List[int]) -> int:
+    def maxSubArray3(self, nums: List[int]) -> int:
 
         def findBestSubarray(nums, left, right):
             # Base case - empty array.
@@ -91,5 +92,4 @@ if __name__ == '__main__':
     print('Max Sub Array:{}'.format(result))
     result = solution.maxSubArray3(nums)
     print('Max Sub Array:{}'.format(result))
-    result = solution.maxSubArray4(nums)
-    print('Max Sub Array:{}'.format(result))
+

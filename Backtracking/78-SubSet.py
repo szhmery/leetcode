@@ -2,6 +2,7 @@ from typing import List
 
 
 class Solution:
+    # backtracking
     def subsets(self, nums: List[int]) -> List[List[int]]:
         ans = []
         n = len(nums)

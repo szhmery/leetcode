@@ -1,5 +1,6 @@
-from typing import List
+from collections import defaultdict
 from queue import Queue
+from typing import List
 
 
 class Solution:
@@ -57,6 +58,44 @@ class Solution:
                 grid[row][col] = '*'
                 queue.put([row, col])
 
+    def numIslands3(self, grid):
+        """
+        :type grid: List[List[str]]
+        :rtype: int
+        """
+        if len(grid) == 0 or len(grid[0]) == 0:
+            return 0
+        totalRow, totalCol = len(grid), len(grid[0])
+        self.parent = defaultdict()
+        self.count = 0
+        for i in range(totalRow):
+            for j in range(totalCol):
+                if grid[i][j] == "1":
+                    self.parent[i * totalCol + j] = i * totalCol + j
+                    self.count += 1
+
+        for i in range(totalRow):
+            for j in range(totalCol):
+                if grid[i][j] == "1":
+                    r, c = i, j
+                    for (dr, dc) in [(-1, 0), (1, 0), (0, -1), (0, 1)]:
+                        newRow, newCol = r + dr, c + dc
+                        if 0 <= newRow < totalRow and 0 <= newCol < totalCol and grid[newRow][newCol] == "1":
+                            self.union(r * totalCol + c, newRow * totalCol + newCol)
+        return self.count
+
+    def find(self, i):
+        if self.parent[i] != i:
+            self.parent[i] = self.find(self.parent[i])
+
+        return self.parent[i]
+
+    def union(self, a, b):
+        rootA = self.find(a)
+        rootB = self.find(b)
+        if rootA != rootB:
+            self.parent[rootA] = rootB
+            self.count -= 1
 
 
 if __name__ == '__main__':
@@ -66,4 +105,7 @@ if __name__ == '__main__':
     print(result)
     grid = [["1", "1", "1", "1", "0"], ["1", "1", "0", "1", "0"], ["1", "1", "0", "0", "0"], ["0", "0", "0", "0", "0"]]
     result = solution.numIslands2(grid)
+    print(result)
+    grid = [["1", "1", "1", "1", "0"], ["1", "1", "0", "1", "0"], ["1", "1", "0", "0", "0"], ["0", "0", "0", "0", "0"]]
+    result = solution.numIslands3(grid)
     print(result)

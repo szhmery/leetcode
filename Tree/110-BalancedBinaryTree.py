@@ -1,10 +1,13 @@
 from Tree.PrintBST import PrintBST
+
+
 # Definition for a binary tree node.
 class TreeNode:
     def __init__(self, val=0, left=None, right=None):
         self.val = val
         self.left = left
         self.right = right
+
 
 class Solution:
     # https://www.bilibili.com/video/BV1sV411b7hR
@@ -19,7 +22,8 @@ class Solution:
             br, lr = dfs(root.right)
             if not br:
                 return False, 0
-            return abs(ll - lr) <= 1, max(ll,lr) + 1
+            return abs(ll - lr) <= 1, max(ll, lr) + 1
+
         return dfs(root)[0]
 
 

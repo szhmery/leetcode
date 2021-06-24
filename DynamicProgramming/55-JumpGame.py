@@ -2,6 +2,7 @@ from typing import List
 
 
 class Solution:
+    # greedy
     def canJump(self, nums: List[int]) -> bool:
         max_steps = 0
         for i in range(len(nums) - 1):

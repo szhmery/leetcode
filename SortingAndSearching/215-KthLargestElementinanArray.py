@@ -11,6 +11,7 @@ class Solution:
             if k == 0:
                 return nums[i]
 
+    # divide and conquer
     def findKthLargest2(self, nums: List[int], k: int) -> int:
         left = 0
         right = len(nums) - 1

@@ -1,4 +1,9 @@
+from collections import defaultdict
+
 class Solution:
+    def __init__(self):
+        self.list = defaultdict()
+
     def fib(self, n: int) -> int:
         if n <= 1:
             return n
@@ -16,6 +21,16 @@ class Solution:
         return cur
 
 
+    def fib3(self, n: int) -> int:
+        if n <= 1:
+            self.list[n] = n
+            return n
+        if n in self.list:
+            return self.list[n]
+        ans = self.fib3(n - 1) + self.fib3(n - 2)
+        self.list[n] = ans
+        return ans
+
 if __name__ == "__main__":
     solution = Solution()
     result = solution.fib(2)
@@ -25,4 +40,6 @@ if __name__ == "__main__":
     result = solution.fib(10)
     print(result)
     result = solution.fib2(10)
+    print(result)
+    result = solution.fib3(10)
     print(result)
