@@ -23,16 +23,18 @@ class Solution:
     # https://blog.csdn.net/fuxuemingzhu/article/details/82960833
     # recursive
     def myPow2(self, x: float, n: int) -> float:
+        if x - 0.0 < 0.0000001 and n < 0:
+            return 0.0
         if n == 0:
             return 1
         if n == 1:
             return x
         if n < 0:
             return 1 / self.myPow2(x, -n)
-        if n % 2 == 1:
+        if n & 0x1 == 1: # n & 0x1 is better than n % 2
             return x * self.myPow2(x, n - 1)
         else:
-            cur = self.myPow2(x, n / 2)
+            cur = self.myPow2(x, n >> 1) # n >>1 is better than n // 2
             return cur * cur
 
 

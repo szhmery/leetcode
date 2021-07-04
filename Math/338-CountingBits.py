@@ -8,3 +8,17 @@ class Solution:
         for i in range(n + 1):
             res[i] = res[i >> 1] + (i & 1)
         return res
+
+    def numberof1(self,n: int):
+        ans = 0
+        while n:
+            ans += 1
+            n = (n - 1) & n
+        return ans
+
+if __name__ == '__main__':
+    solution = Solution()
+    result = solution.countBits(3)
+    print(result)
+    result = solution.numberof1(9)
+    print(result)

@@ -113,7 +113,7 @@ if __name__ == '__main__':
     result = solution.lengthOfLongestSubstring(s)
     print("method 1:{}".format(result))
     result = solution.lengthOfLongestSubstring2(s)
-    print("method 2:{}".format(result))
+    print("method 2:{} frvz5∫ç∂©˙ß†∑≈¥£¢§Ô€‡¨".format(result))
     result = solution.lengthOfLongestSubstring3(s)
     print("method 3:{}".format(result))
     result = solution.lengthOfLongestSubstring4(s)

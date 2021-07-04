@@ -70,6 +70,45 @@ class Solution:
             return left if left_count > right_count else right
 
         return majority_element_rec(0, len(nums) - 1)
+    # quick sort
+    #O(nlogn)
+    import random
+    def majorityElement_quicksort(self, nums):
+        def partition(nums, low, high):
+            if low == high:
+                return low
+            p = low + random.randrange(high - low + 1)
+            # pivot = nums[random.randint(left, right)]
+            pivot = nums[p]
+            nums[p], nums[high] = nums[high], nums[p]
+
+            small = low - 1
+            for i in range(low, high):
+                if nums[i] < pivot:
+                    small += 1
+                    if i != small:
+                        nums[small], nums[i] = nums[i], nums[small]
+
+            small += 1
+            nums[small], nums[high] = nums[high], nums[small]
+            return small
+
+        n = len(nums)
+        mid = n // 2
+        start = 0
+        end = n - 1
+        index = partition(nums, start, end)
+        while index != mid:
+            if index > mid:
+                end = index - 1
+                index = partition(nums, start, end)
+            else:
+                start = index + 1
+                index = partition(nums, start, end)
+        ans = nums[mid]
+        return ans
+
+
 
     # Boyer-Moore Voting Algorithm
     # Time complexity : O(n)
@@ -98,6 +137,9 @@ if __name__ == '__main__':
     result = solution.majorityElement4(tokens)
     print(result)
     result = solution.majorityElement5(tokens)
+    print(result)
+    tokens = [4,5,4]
+    result = solution.majorityElement_quicksort(tokens)
     print(result)
 
 

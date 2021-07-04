@@ -8,11 +8,15 @@ class ListNode:
 class Solution:
     # one pass algorithm
     def removeNthFromEnd2(self, head: ListNode, n: int) -> ListNode:
+        if not head or n == 0:
+            return
         dummy = ListNode()
         dummy.next = head
         first = dummy
         second = dummy
         for i in range(n + 1):
+            if not first.next:
+                return
             first = first.next
         while first:
             first = first.next

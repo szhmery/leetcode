@@ -41,6 +41,8 @@ class Solution:
     def copyRandomList2(self, head: 'Node') -> 'Node':
         if head in self.visit:
             head = self.visit[head]
+        if not head:
+            return
         node = Node(head.val)
         self.visit[head] = node
         node.next = self.copyRandomList2(head.next)
@@ -57,3 +59,8 @@ if __name__ == '__main__':
 
     solution = Solution()
     newList = solution.copyRandomList2(l)
+    print("\nAfter:")
+    tmp_list = newList
+    while tmp_list != None:
+        print(str(tmp_list.val), end='->')
+        tmp_list = tmp_list.next

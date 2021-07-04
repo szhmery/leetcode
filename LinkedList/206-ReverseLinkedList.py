@@ -16,7 +16,6 @@ class Solution:
         head.next = None
         return p
 
-
     # https://www.bilibili.com/video/BV1g4411z7uN?from=search&seid=2204095547336912690
     def reverseList2(self, head: ListNode) -> ListNode:
         if head is None:
@@ -29,34 +28,6 @@ class Solution:
             pre = cur
             cur = next
         return pre
-
-
-    def reverseList2(self, head: ListNode) -> ListNode:
-        new_head = None
-        node = head
-        last_node = head
-        while node is not None:
-            if node.next is None:
-                if new_head is None:
-                    # there is only one node in the list, just return this node
-                    return node
-                # this is the last node in the list
-                node.next = last_node
-                return new_head
-            else:
-                # move the head to the next node
-                new_head = node.next
-
-            if node == head:
-                # this is the first node in the list
-                node.next = None
-            else:
-                # point the node next to the last node, reverse the link
-                node.next = last_node
-            # for the next circle
-            last_node = node
-            node = new_head
-        return new_head
 
 
 if __name__ == '__main__':

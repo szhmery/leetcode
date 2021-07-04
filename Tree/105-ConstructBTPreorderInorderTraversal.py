@@ -12,6 +12,15 @@ class TreeNode:
 
 class Solution:
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        if not (preorder and inorder):
+            return
+        root = TreeNode(preorder[0])
+        mid_index = inorder.index(preorder[0])
+        root.left = self.buildTree(preorder[1:mid_index + 1], inorder[:mid_index])
+        root.right = self.buildTree(preorder[mid_index + 1:], inorder[mid_index + 1:])
+        return root
+
+    def buildTree2(self, preorder: List[int], inorder: List[int]) -> TreeNode:
         def array_to_tree(left, right):
             nonlocal preorder_index
             # if there are no elements to construct the tree

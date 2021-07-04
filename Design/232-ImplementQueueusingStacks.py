@@ -31,6 +31,7 @@ class MyQueue:
         """
         return len(self.stack) == 0
 
+
 class MyQueue2:
 
     def __init__(self):
@@ -63,9 +64,27 @@ class MyQueue2:
         Returns whether the queue is empty.
         """
         return len(self.stack) == 0
+
+
 # Your MyQueue object will be instantiated and called as such:
 # obj = MyQueue()
 # obj.push(x)
 # param_2 = obj.pop()
 # param_3 = obj.peek()
 # param_4 = obj.empty()
+
+class MyQueue2:
+    def __init__(self):
+        self.stack1 = []
+        self.stack2 = []
+
+    def push(self, val):
+        self.stack1.append(val)
+
+    def pop(self) -> int:
+        if not self.stack2:
+            while self.stack1:
+                self.stack2.append(self.stack1.pop())
+        if not self.stack2:
+            raise Exception("queue is emtpy")
+        return self.stack2.pop()
