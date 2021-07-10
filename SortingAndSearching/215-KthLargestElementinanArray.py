@@ -29,7 +29,7 @@ class Solution:
     def quick_sort(self, nums, low, high):
         if low == high:
             return low
-        pivot_index = low + random.randrange(high - low + 1)
+        pivot_index = low + random.randrange(high - low + 1) # random.randrange(low, high + 1) also works
         pivot = nums[pivot_index]
         nums[pivot_index], nums[high] = nums[high], nums[pivot_index]
         i = low

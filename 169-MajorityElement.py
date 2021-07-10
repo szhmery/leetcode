@@ -1,16 +1,64 @@
-from typing import List
 import collections
 import random
+from typing import List
 
 
 class Solution:
-    def majorityElement(self, nums: List[int]) -> int:
+    def majorityElement0(self, nums: List[int]) -> int:
         size = len(nums)
         count_dict = {}
         for num in nums:
             count_dict[num] = count_dict.setdefault(num, 0) + 1
             if count_dict[num] > size // 2:
                 return num
+
+    # bit manipulation
+    # https://leetcode.com/problems/sum-of-two-integers/discuss/84278/A-summary%3A-how-to-use-bit-manipulation-to-solve-problems-easily-and-efficiently
+    def majorityElement_bit(self, nums: List[int]) -> int:
+        bits = [0] * 32
+        ans = 0
+        for num in nums:
+            for i in range(32):
+                if (num >> i) & 1 == 1:
+                    bits[i] += 1
+
+        for i in range(32):
+            if bits[i] > len(nums) / 2:
+                # if the 31th bit if 1, it means it's a negative number
+                if i == 31:
+                    # ans = -((1 << 31) - ans)
+                    ans = ans - (2**31)
+
+                else:
+                    ans |= 1 << i
+
+        return ans
+    def majorityElement_bit2(self, nums: List[int]) -> int:
+        if len(nums) == 1:
+            return nums[0]
+        n = len(nums)
+        mask = 1
+        ans = 0
+        for i in range(32):
+            count = 0
+            for num in nums:
+                if mask & num:
+                    count += 1
+                if count > n / 2:
+                    # if the 31th bit if 1, it means it's a negative number
+                    if i == 31:
+                        ans = -((1 << 31) - ans)
+                        # ans |= (~0x100000000 + 1)
+                    else:
+                        ans |= mask
+
+            mask <<= 1
+        return ans
+
+    # https://leetcode.com/problems/majority-element/discuss/376822/Bit-Manipulation
+
+
+
     # Brute Force
     # Time complexity : O(n^2)
     # Space complexity : O(1)
@@ -20,6 +68,7 @@ class Solution:
             count = sum(1 for elem in nums if elem == num)
             if count > majority_count:
                 return num
+
     # HashMap
     # Time complexity : O(n)
     # Space complexity : O(n)
@@ -32,7 +81,7 @@ class Solution:
     # Space complexity : O(1) or O(n)
     def majorityElement3(self, nums):
         nums.sort()
-        return nums[len(nums)//2]
+        return nums[len(nums) // 2]
 
     # Randomization
     # Time complexity : O(∞)
@@ -70,12 +119,12 @@ class Solution:
             return left if left_count > right_count else right
 
         return majority_element_rec(0, len(nums) - 1)
+
     # quick sort
-    #O(nlogn)
-    import random
+    # O(nlogn)
     def majorityElement_quicksort(self, nums):
         def partition(nums, low, high):
-            if low == high:
+            if low >= high:
                 return low
             p = low + random.randrange(high - low + 1)
             # pivot = nums[random.randint(left, right)]
@@ -108,8 +157,6 @@ class Solution:
         ans = nums[mid]
         return ans
 
-
-
     # Boyer-Moore Voting Algorithm
     # Time complexity : O(n)
     # Space complexity : O(1)
@@ -138,8 +185,15 @@ if __name__ == '__main__':
     print(result)
     result = solution.majorityElement5(tokens)
     print(result)
-    tokens = [4,5,4]
-    result = solution.majorityElement_quicksort(tokens)
-    print(result)
 
+    print(solution.majorityElement_quicksort(tokens))
+    print(solution.majorityElement_quicksort([4, 5, 4]))
 
+    print(solution.majorityElement_bit([1, 2, 2, 5, 6, 2, 2]))
+    print('start')
+    print(solution.majorityElement_bit([-2147483648]))
+    print(solution.majorityElement_bit2([-2147483648]))
+    print(solution.majorityElement_bit([-1, -1, 2147483647]))
+    print(solution.majorityElement_bit2([-1, -1, 2147483647]))
+    print(solution.majorityElement_bit([-2147483648, -2147483648]))
+    print(solution.majorityElement_bit2([-2147483648, -2147483648]))

@@ -8,7 +8,7 @@ class Solution:
         ans = []
         for h in range(12):
             for m in range(60):
-                if (bin(h) + bin(m)).count('1') == turnedOn:
+                if (bin(h) + bin(m)).count('1') == turnedOn: # 1, 2, 4, 8, 16, 32, they all have only 1 bit on the fisrt bit
                     ans.append('%d:%02d' % (h, m))
         return ans
 

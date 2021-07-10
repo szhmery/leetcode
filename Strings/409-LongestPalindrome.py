@@ -9,7 +9,7 @@ class Solution:
 
         for v in map.values():
             ans += v // 2 * 2
-            if ans % 2 == 0 and v % 2 != 0:
+            if ans % 2 == 0 and v % 2 != 0:  # aaaccc, if a is 3, add 1 more.
                 ans += 1
 
         return ans

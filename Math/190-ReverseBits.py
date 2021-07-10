@@ -1,4 +1,5 @@
 class Solution:
+    # bit manipulation
     # https://www.bilibili.com/video/BV1qv411i7Wg?from=search&seid=4304170392741184236
     def reverseBits(self, n: int) -> int:
         ans = 0
