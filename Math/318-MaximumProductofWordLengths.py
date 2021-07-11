@@ -2,7 +2,7 @@ from typing import List
 
 
 class Solution:
-    #bit manipulation
+    # bit manipulation
     def maxProduct(self, words: List[str]) -> int:
         res = 0
         masks = []
@@ -17,8 +17,6 @@ class Solution:
                     res = max(res, len(words[i]) * len(words[j]))
         return res
 
-
-
     # force brute
     def maxProduct2(self, words: List[str]) -> int:
         set_dict = {}
@@ -31,10 +29,11 @@ class Solution:
             set_dict[word] = len(word)
         return res
 
+
 solution = Solution()
-words = ["abcw","baz","foo","bar","xtfn","abcdef"]
+words = ["abcw", "baz", "foo", "bar", "xtfn", "abcdef"]
 print(solution.maxProduct(words))
 print(solution.maxProduct2(words))
-words =["a","ab","abc","d","cd","bcd","abcd"]
+words = ["a", "ab", "abc", "d", "cd", "bcd", "abcd"]
 print(solution.maxProduct(words))
 print(solution.maxProduct2(words))

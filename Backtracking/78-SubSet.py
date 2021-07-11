@@ -3,6 +3,8 @@ from typing import List
 
 class Solution:
     # backtracking
+    # Time complexity:O(N×2^N)
+    # Space complexity: O(N)
     def subsets(self, nums: List[int]) -> List[List[int]]:
         ans = []
         n = len(nums)
@@ -21,6 +23,18 @@ class Solution:
         for k in range(n + 1):
             helper(0, [])
         return ans
+    # https://leetcode.com/problems/subsets/solution/
+    # bit manipulation
+    def subsets_bit(self, nums: List[int]) -> List[List[int]]:
+        n = len(nums)
+        nth_bit = 1 << n
+        res = []
+        for i in range(2 ** n):
+            # generate bitmask, from 0..00 to 1..11
+            bitmask = bin(i | nth_bit)[3:]
+            # print(bitmask)
+            res.append([nums[j] for j in range(n) if bitmask[j] == '1'])
+        return res
 
     # Complexity Analysis
     # https://leetcode.com/problems/subsets/solution/
@@ -68,3 +82,5 @@ if __name__ == '__main__':
 
     result = solution.subsets3(n)
     print(result)
+
+    print(solution.subsets_bit(n))
