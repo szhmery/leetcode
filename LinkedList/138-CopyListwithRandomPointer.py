@@ -40,7 +40,7 @@ class Solution:
 
     def copyRandomList2(self, head: 'Node') -> 'Node':
         if head in self.visit:
-            head = self.visit[head]
+            return self.visit[head]
         if not head:
             return
         node = Node(head.val)
@@ -48,6 +48,44 @@ class Solution:
         node.next = self.copyRandomList2(head.next)
         node.random = self.copyRandomList2(head.random)
         return node
+
+    # don't use hash dictionary
+    def copyRandomList3(self, head: 'Node') -> 'Node':
+        def cloneNodes(head: 'Node'):
+            if not head:
+                return
+            node = head
+            while node:
+                c_node = Node(node.val)
+                c_node.next = node.next
+                node.next = c_node
+                node = c_node.next
+        def connectRandom(head: 'Node'):
+            if not head:
+                return
+            node = head
+            while node:
+                c_node = node.next
+                if node.random:
+                    c_node.random = node.random.next
+                node = c_node.next
+
+        def splitList(head: 'Node') -> Node:
+            if not head:
+                return
+            node = head
+            c_head = node.next
+            while node:
+                c_node = node.next
+                node.next = c_node.next
+                node = node.next
+                if node:
+                    c_node.next = node.next
+
+            return c_head
+        cloneNodes(head)
+        connectRandom(head)
+        return splitList(head)
 
 
 if __name__ == '__main__':
@@ -58,7 +96,7 @@ if __name__ == '__main__':
     a.random = a
 
     solution = Solution()
-    newList = solution.copyRandomList2(l)
+    newList = solution.copyRandomList3(l)
     print("\nAfter:")
     tmp_list = newList
     while tmp_list != None:

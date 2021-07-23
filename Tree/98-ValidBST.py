@@ -37,6 +37,7 @@ class Solution:
         return helper(root)
 
     #https://leetcode.com/problems/validate-binary-search-tree/discuss/32112/Learn-one-iterative-inorder-traversal-apply-it-to-multiple-tree-questions-(Java-Solution)
+    # inorder
     def isValidBST3(self, root: TreeNode) -> bool:
         stack = []
         pre = None

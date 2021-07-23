@@ -27,3 +27,14 @@ class Solution:
             q = tmp
             ans.append(val)
         return ans[::-1]
+
+solution = Solution()
+root = TreeNode(1)
+a = TreeNode(2)
+b = TreeNode(3)
+a.left = TreeNode(4)
+a.right = TreeNode(5)
+b.right = TreeNode(7)
+root.left = a
+root.right = b
+print(solution.levelOrderBottom(root))

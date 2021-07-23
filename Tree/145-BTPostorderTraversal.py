@@ -25,9 +25,9 @@ class Solution:
             if node.right:
                 stack1.append(node.right)
             stack2.append(node.val)
-        while stack2:
-            ans.append(stack2.pop())
-        return ans
+        # while stack2:
+        #     ans.append(stack2.pop())
+        return stack2[::-1]
 
     def postorderTraversal2(self, root: TreeNode) -> List[int]:
         def postorder(node):

@@ -33,6 +33,7 @@ class Solution:
                     ans |= 1 << i
 
         return ans
+    # https://leetcode.com/problems/majority-element/discuss/376822/Bit-Manipulation
     def majorityElement_bit2(self, nums: List[int]) -> int:
         if len(nums) == 1:
             return nums[0]
@@ -55,7 +56,7 @@ class Solution:
             mask <<= 1
         return ans
 
-    # https://leetcode.com/problems/majority-element/discuss/376822/Bit-Manipulation
+
 
 
 

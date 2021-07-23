@@ -66,6 +66,19 @@ class Solution:
         # any array - so just call it using the entire input!
         return findBestSubarray(nums, 0, len(nums) - 1)
 
+    def maxSubArray4(self, nums: List[int]) -> int:
+        if not nums and len(nums) == 0:
+            return
+        cur_sum = 0
+        mx = -math.inf
+        for i in range(len(nums)):
+            if cur_sum < 0:
+                cur_sum = nums[i]
+            else:
+                cur_sum += nums[i]
+            if cur_sum > mx:
+                mx = cur_sum
+        return mx
     """
     # Complexity Analysis
     # Time complexity: O(N^2), where NN is the length of nums.
@@ -91,5 +104,8 @@ if __name__ == '__main__':
     result = solution.maxSubArray2(nums)
     print('Max Sub Array:{}'.format(result))
     result = solution.maxSubArray3(nums)
+    print('Max Sub Array:{}'.format(result))
+    nums = [-1,-2,-3,-4]
+    result = solution.maxSubArray4(nums)
     print('Max Sub Array:{}'.format(result))
 

@@ -94,7 +94,7 @@ if __name__ == "__main__":
     solution = Solution()
     nums = [1, 1, 1, 2, 2, 3]
     k = 2
-    print("Before move zeroes:{}".format(nums))
+    print("Before:{}".format(nums))
     result = solution.topKFrequent(nums, k)
     print("method 1:{}".format(result))
     nums = [1, 1, 1, 2, 2, 3]
@@ -107,6 +107,6 @@ if __name__ == "__main__":
     print("method 3:{}".format(result))
     nums = [3, 0, 1, 0]
     k = 1
-    print("Before move zeroes:{}".format(nums))
+    print("Before:{}".format(nums))
     result = solution.topKFrequent(nums, k)
     print("method 1:{}".format(result))

@@ -25,7 +25,23 @@ class Solution:
             return abs(ll - lr) <= 1, max(ll, lr) + 1
 
         return dfs(root)[0]
-
+    # post order
+    def isBalanced2(self, root: TreeNode) -> bool:
+        if not root:
+            return True
+        def postOrder(root):
+            if not root:
+                return 0
+            left = postOrder(root.left)
+            if left == -1:
+                return -1
+            right = postOrder(root.right)
+            if right == -1:
+                return -1
+            if abs(left - right) > 1:
+                return -1
+            return 1 + max(left, right)
+        return postOrder(root) != -1
 
 if __name__ == '__main__':
     root = TreeNode(3)
@@ -39,3 +55,11 @@ if __name__ == '__main__':
     solution = Solution()
     result = solution.isBalanced(root)
     print('is balanced:{}'.format(result))
+    root = TreeNode(3)
+    root.left = TreeNode(9)
+    a = TreeNode(20)
+    root.right = a
+    a.left = TreeNode(15)
+    a.right = TreeNode(7)
+    result = solution.isBalanced2(root)
+    print('is balanced2:{}'.format(result))

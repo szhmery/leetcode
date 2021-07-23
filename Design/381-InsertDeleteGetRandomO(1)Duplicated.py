@@ -114,7 +114,7 @@ class RandomizedCollection:
 #         return random.choice(self.datas)
 
 # Your RandomizedCollection object will be instantiated and called as such:
-obj = RandomizedCollection2()
+obj = RandomizedCollection()
 param = obj.insert(1)
 print(param)
 param = obj.insert(1)

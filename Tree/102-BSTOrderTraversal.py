@@ -1,3 +1,5 @@
+from queue import Queue
+
 from Tree.PrintBST import PrintBST
 
 
@@ -44,6 +46,18 @@ class Solution:
             self.preOrder(node.left, level + 1, res)
             self.preOrder(node.right, level + 1, res)
 
+    def printLevelOrder(self, root: TreeNode) -> 'List[int]':
+        queue = Queue()
+        queue.put(root)
+        ans = []
+        while queue.qsize() > 0: # must use qsize, if queue is emtpy, queue is not None
+            tmp = queue.get()
+            if tmp:
+                ans.append(tmp.val)
+                queue.put(tmp.left)
+                queue.put(tmp.right)
+        return ans
+
 
 if __name__ == '__main__':
     root = TreeNode(3)
@@ -64,3 +78,5 @@ if __name__ == '__main__':
     result = solution.levelOrder2(root)
     print('method 2: Order traversal:')
     print(result)
+
+    print(solution.printLevelOrder(root))

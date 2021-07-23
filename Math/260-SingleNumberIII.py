@@ -17,13 +17,18 @@ class Solution:
         res = [0, 0]
         for num in nums:
             r ^= num
-        mask = r & ~(r-1)
+        mask = r & ~(r-1) #find the last 1 bit
         for num in nums:
             if mask & num:
                 res[0] ^= num #分两组异或，就能分别找到他们
             else:
                 res[1] ^= num
         return res
+
+    def singleNumber2(self, nums: List[int]) -> List[int]:
+        r = 0
+        for num in nums:
+            r ^= num
 
     def singleNumber2(self, nums: List[int]) -> List[int]:
         ans = set()
