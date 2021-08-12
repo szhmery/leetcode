@@ -25,10 +25,6 @@ class Solution:
                 res[1] ^= num
         return res
 
-    def singleNumber2(self, nums: List[int]) -> List[int]:
-        r = 0
-        for num in nums:
-            r ^= num
 
     def singleNumber2(self, nums: List[int]) -> List[int]:
         ans = set()

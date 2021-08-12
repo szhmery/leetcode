@@ -1,4 +1,5 @@
 from typing import List
+
 from Tree.PrintBST import PrintBST
 
 
@@ -54,4 +55,9 @@ if __name__ == '__main__':
     solution = Solution()
     root = solution.buildTree(preorder, inorder)
     print('method 1: buildTree:')
+    PrintBST.printBST(root)
+    preorder = [1, 2, 3, 4, 5, 6, 7]
+    inorder = [3, 2, 4, 1, 6, 5, 7]
+    root = solution.buildTree2(preorder, inorder)
+    print('method 2: buildTree:')
     PrintBST.printBST(root)

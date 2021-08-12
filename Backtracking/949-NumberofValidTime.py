@@ -34,6 +34,43 @@ def solution(A, B, C, D):
 
 
 def largestTimeFromDigits( A, B, C, D) -> str:
+    # write your code in Python 3.6
+    # It uses backtracking algorithm.
+    nums = [A, B, C, D]
+    # record the total count
+    count = 0
+    # the set used to save existed valid time.
+    hm_set = set()
+
+    def create(permutation):
+        nonlocal count
+        h, i, j, k = permutation
+        hour = h * 10 + i
+        minute = j * 10 + k
+        # if the time format is invalid or it's existed in the set, will return.
+        if hour < 24 and minute < 60 and str(hour) + str(minute) not in hm_set:
+            count += 1
+            # save the existed hour+minute string to a set.
+            hm_set.add(str(hour) + str(minute))
+
+    def permutate(nums, start):
+        # if index is 4, we collect 4 digits to calculate time, it reaches the end of the combination.
+        if start == len(nums):
+            # check whether the time is valid or not.
+            create(nums)
+            return
+        # switch the element between the first position in the array and each of the positions in the array
+        for index in range(start, len(nums)):
+            nums[index], nums[start] = nums[start], nums[index]
+            permutate(nums, start + 1)
+            # remember to swap back.
+            nums[index], nums[start] = nums[start], nums[index]
+
+    permutate(nums, 0)
+    return count
+
+
+def largestTimeFromDigits2( A, B, C, D) -> str:
     nums = [A, B, C, D]
     ans = 0
     hm_set = set()

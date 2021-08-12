@@ -12,9 +12,9 @@ class Solution:
     def invertTree(self, root: TreeNode) -> TreeNode:
         if not root:
             return
-        root.left, root.right = root.right, root.left
         self.invertTree(root.left)
         self.invertTree(root.right)
+        root.left, root.right = root.right, root.left
         return root
 
     def invertTree2(self, root: TreeNode) -> TreeNode:

@@ -7,10 +7,10 @@ class Solution:
         queue = []
         l = len(nums)
         for i in range(l):
-            while queue and nums[queue[-1]] <= nums[i]:
-                queue.pop()
+            while queue and nums[queue[-1]] <= nums[i]: #从队首到队尾单调递减或递增的队列称之为单调队列
+                queue.pop() #比插入小的值pop出来，因为它不可能是最大值。
             queue.append(i)
-            if queue[0] == i - k:
+            if queue[0] == i - k: #当队首元素在原数组中的下标小于窗口左边界时，队首元素就需要移除队列。
                 queue.pop(0)
             if i >= k - 1:
                 ans.append(nums[queue[0]])

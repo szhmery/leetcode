@@ -1,5 +1,7 @@
 from typing import List
-from Tree.PrintBST import  PrintBST
+
+from Tree.PrintBST import PrintBST
+
 
 # Definition for a binary tree node.
 class TreeNode:
@@ -10,6 +12,10 @@ class TreeNode:
 
 
 class Solution:
+    # Time complexity : O(n),n 是二叉搜索树的节点数。每一个节点恰好被遍历一次。
+    # Space complexity : O(n)时间复杂度：O(n)，其中 n
+    # 空间复杂度：O(n)，为迭代过程中显式栈的开销，平均情况下为 O(logn)，最坏情况下树呈现链状，为 O(n)。
+
     def postorderTraversal(self, root: TreeNode) -> List[int]:
         ans = []
         if root is None:
@@ -36,6 +42,7 @@ class Solution:
             postorder(node.left)
             postorder(node.right)
             ans.append(node.val)
+
         ans = []
         postorder(root)
         return ans

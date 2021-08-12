@@ -42,32 +42,33 @@ class Solution:
             R += 1
         return R - L - 1
 
-    # DP, not very good. forget about it.
+    # DP
+    #时间复杂度：O(n^2)，其中 nn 是字符串的长度。动态规划的状态总数为 O(n^2)，对于每个状态，我们需要转移的时间为 O(1)。
+    #空间复杂度：O(n^2)，即存储动态规划状态需要的空间。
+
     def longestPalindrome_dp(self, s: str) -> str:
         n = len(s)
         if s is None or len(s) == 0:
             return None
         if n == 1:
             return s
-        dp = [[False] * n] * n
-        max_len = 0
+        dp = [[False] * n for _ in range(n)]
         st = 0
 
-        for i in range(n):
-            for j in range(n):
-                if i == j:
-                    dp[i][j] = True
-                    st = i
-                    max_len = 1
-        for j in range(n):
+        # for i in range(n):
+        #     for j in range(n):
+        #         if i == j:
+        #             dp[i][j] = True
+        #             st = i
+        max_len = 1
+        for j in range(1, n):
             for i in range(j):
-                if s[i] == s[j] and dp[i+1][j-1]:
+                if s[i] == s[j] and (j - i <= 2 or dp[i+1][j-1]):
                     dp[i][j] = True
                     if max_len < j-i+1:
                         st = i
                         max_len = j-i+1
         return s[st:st+max_len]
-
 
 
 if __name__ == '__main__':

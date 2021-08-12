@@ -14,12 +14,14 @@ class Solution:
 
 if __name__ == "__main__":
     solution = Solution()
-    a = 13
-    b = 3
-    result = solution.getSum2(a, b)
-    print(result)
-    result = solution.getSum(2147483647, 2147483647)
-    print(result)
-    result = solution.getSum(2147483647, 2)
-    print(result)
 
+    print(solution.getSum(13, 3))
+    print(solution.getSum(2147483647, 2147483647))
+    print(solution.getSum(2147483647, 2147483647))
+    print(solution.getSum(2147483647, 2))
+    print(solution.getSum(2147483646, 1))
+
+    print(solution.getSum2(13, 3))
+    print(solution.getSum2(2147483647, 2147483647))
+    print(solution.getSum2(2147483647, 2147483647))
+    print(solution.getSum2(2147483647, 2))

@@ -56,6 +56,6 @@ if __name__ == '__main__':
     nums = [2, 7, 9, 3, 1]
     result = solution.rob3(nums)
     print('Max rob:{}'.format(result))
-    nums = [2, 1, 1, 2]
+    nums = [-1,-1,-1,-1]
     result = solution.rob3(nums)
     print('Max rob:{}'.format(result))

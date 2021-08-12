@@ -10,6 +10,8 @@ class TreeNode:
 
 
 class Solution:
+    # Time complexity : O(n) n 为二叉树节点的个数
+    # Space complexity : O(n).
     def inorderTraversal(self, root: 'TreeNode') -> 'List[int]':
         """利用堆栈实现树的中序遍历"""
         ans = []
