@@ -6,6 +6,9 @@ class Solution:
     # Using Reverse
     # Time complexity: O(n).
     # Space complexity: O(1).
+    #时间复杂度：O(n)，其中 nn 为数组的长度。每个元素被翻转两次，一共 n 个元素，因此总时间复杂度为 O(2n)=O(n)。
+    #空间复杂度：O(1)。
+
     def rotate(self, nums: List[int], k: int) -> None:
         def reverse(nums, lo, hi):
             while lo < hi:
@@ -17,9 +20,9 @@ class Solution:
             return
         n = len(nums)
         k %= n
-        reverse(nums, 0, n - 1)
-        reverse(nums, 0, k - 1)
-        reverse(nums, k, n - 1)
+        reverse(nums, 0, n - 1) # reverse all nums
+        reverse(nums, 0, k - 1) # reverse 0 to k - 1, left part
+        reverse(nums, k, n - 1) # reverse the right part
 
     # https://leetcode.com/problems/rotate-array/solution/
     def rotate4(self, nums: List[int], k: int) -> None:
@@ -58,15 +61,15 @@ class Solution:
         k %= n
 
         start = count = 0
-        while count < n:
-            current, prev = start, nums[start]
+        while count < n: # if count is n, all nums are cycled.
+            current, prev = start, nums[start] # save current and pre
             while True:
                 next_idx = (current + k) % n
-                nums[next_idx], prev = prev, nums[next_idx]
+                nums[next_idx], prev = prev, nums[next_idx] # move prev to next_idx, next_idx is next replacement position
                 current = next_idx
                 count += 1
 
-                if start == current:
+                if start == current: # if current becomes start, it returns to the start position, break and continue start + 1
                     break
             start += 1
 

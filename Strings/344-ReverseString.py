@@ -35,11 +35,6 @@ class Solution:
         return recursion(s, 0, len(s) - 1)
 
 
-
-
-
-
-
 if __name__ == "__main__":
     solution = Solution()
     string1 = ["h", "e", "l", "l", "o"]

@@ -6,7 +6,7 @@ class NumArray:
     def __init__(self, nums: List[int]):
         # 前缀和
         self.nums = nums
-        self.pre_sum = [0]
+        self.pre_sum = [0] # the first value is 0.
         pre = 0
         for num in nums:
             pre += num

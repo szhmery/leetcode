@@ -9,7 +9,7 @@ class Solution:
         length = 0
         for hi in range(len(s)):
             char_map[ord(s[hi])] += 1
-            while char_map[ord(s[hi])] > 1:
+            while char_map[ord(s[hi])] > 1: # check the hi position, if hi is the duplicate value, move lo one by one
                 char_map[ord(s[lo])] -= 1  # move lo, reduce the count of lo, not hi.
                 lo += 1
             length = max(length, hi - lo + 1)
@@ -24,7 +24,7 @@ class Solution:
         length = 0
         for hi in range(len(s)):
             if s[hi] in char_set:
-                while lo < hi and s[lo] != s[hi]:
+                while lo < hi and s[lo] != s[hi]: # 不断地移动右指针，不要删除两者相等的那个，要保留，不然就没有了。
                     char_set.remove(s[lo])
                     lo += 1
                 lo += 1
@@ -45,7 +45,7 @@ class Solution:
         for j in range(n):
             if s[j] in mp:
                 # i = max(mp[s[j]], i) # if save index + 1
-                i = max(mp[s[j]] + 1, i)
+                i = max(mp[s[j]] + 1, i) # find the existing index and plus 1.
             mp[s[j]] = j
             ans = max(ans, j - i + 1)
             # mp[s[j]] = j + 1 # if save index + 1
@@ -113,7 +113,7 @@ if __name__ == '__main__':
     result = solution.lengthOfLongestSubstring(s)
     print("method 1:{}".format(result))
     result = solution.lengthOfLongestSubstring2(s)
-    print("method 2:{} frvz5∫ç∂©˙ß†∑≈¥£¢§Ô€‡¨".format(result))
+    print("method 2:{} ".format(result))
     result = solution.lengthOfLongestSubstring3(s)
     print("method 3:{}".format(result))
     result = solution.lengthOfLongestSubstring4(s)

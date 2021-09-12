@@ -63,6 +63,29 @@ class Solution:
             for i in range(R):
                 matrix[i][0] = 0
 
+    # Complexity Analysis
+    # Time Complexity: O(M×N) where M and N are the number of rows and columns respectively.
+    # Space Complexity: O(1).
+    # 可以用矩阵的第一行和第一列代替方法一中的两个标记数组，以达到 O(1)O(1) 的额外空间
+    # 只使用一个标记变量记录第一列是否原本存在 0。这样，第一列的第一个元素即可以标记第一行是否出现 0。但为了防止每一列的第一个元素被提前更新，
+    # 我们需要从最后一行开始，倒序地处理矩阵元素。
+
+    def setZeroes3(self, matrix: List[List[int]]) -> None:
+        R, C = len(matrix), len(matrix[0])
+        is_col = False
+        for i in range(R):
+            if matrix[i][0] == 0:
+                is_col = True  # the first column has 0
+            for j in range(1, C):
+                if matrix[i][j] == 0:
+                    matrix[i][0] = matrix[0][j] = 0  # use the first row and column to identify if this row or column has 0
+        for i in range(R - 1, -1, -1): # 为了防止每一列的第一个元素被提前更新，我们需要从最后一行开始，倒序地处理矩阵元素。
+            for j in range(1, C):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+            if is_col:
+                matrix[i][0] = 0
+        return
 
 if __name__ == "__main__":
     solution = Solution()

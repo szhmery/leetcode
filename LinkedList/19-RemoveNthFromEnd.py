@@ -7,7 +7,7 @@ class ListNode:
 
 class Solution:
     # one pass algorithm
-    def removeNthFromEnd2(self, head: ListNode, n: int) -> ListNode:
+    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
         if not head or n == 0:
             return
         dummy = ListNode()
@@ -15,8 +15,8 @@ class Solution:
         first = dummy
         second = dummy
         for i in range(n + 1):
-            if not first.next:
-                return
+            # if not first.next:
+            #     return
             first = first.next
         while first:
             first = first.next
@@ -25,7 +25,7 @@ class Solution:
         return dummy.next
 
     # two pass algorithm
-    def removeNthFromEnd(self, head: ListNode, n: int) -> ListNode:
+    def removeNthFromEnd3(self, head: ListNode, n: int) -> ListNode:
         dummy = ListNode(0)
         dummy.next = head
         first = head
@@ -41,35 +41,49 @@ class Solution:
         first.next = first.next.next
         return dummy.next
 
-
-
+    def removeNthFromEnd2(self, head: ListNode, n: int) -> ListNode:
+        fast = head
+        while n > 0:
+            fast = fast.next
+            n -= 1
+        pre = None
+        slow = head
+        while slow and fast:
+            pre = slow
+            slow = slow.next
+            fast = fast.next
+        if pre:
+            pre.next = slow.next
+        else:
+            head = head.next
+        return head
 
 if __name__ == '__main__':
     rawList = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
 
-    print("\nBefore:")
+    print("\nBefore1:")
     tmp_list = rawList
     while tmp_list != None:
         print(str(tmp_list.val), end='->')
         tmp_list = tmp_list.next
 
     solution = Solution()
-    rawList = solution.removeNthFromEnd(rawList, 2)
-    print("\nAfter:")
+    rawList = solution.removeNthFromEnd2(rawList, 2)
+    print("\nAfter1:")
     tmp_list = rawList
     while tmp_list != None:
         print(str(tmp_list.val), end='->')
         tmp_list = tmp_list.next
 
     rawList = ListNode(1, ListNode(2))
-    print("\nBefore:")
+    print("\nBefore2:")
     tmp_list = rawList
     while tmp_list != None:
         print(str(tmp_list.val), end='->')
         tmp_list = tmp_list.next
 
     rawList = solution.removeNthFromEnd2(rawList, 2)
-    print("\nAfter:")
+    print("\nAfter2:")
     tmp_list = rawList
     while tmp_list != None:
         print(str(tmp_list.val), end='->')
@@ -77,21 +91,21 @@ if __name__ == '__main__':
 
     rawList = ListNode(1)
     rawList = solution.removeNthFromEnd2(rawList, 1)
-    print("\nAfter:")
+    print("\nAfter3:")
     tmp_list = rawList
     while tmp_list != None:
         print(str(tmp_list.val), end='->')
         tmp_list = tmp_list.next
 
     rawList = ListNode(1, ListNode(2, ListNode(3, ListNode(4, ListNode(5)))))
-    rawList = solution.removeNthFromEnd2(rawList, 2)
+    rawList = solution.removeNthFromEnd3(rawList, 2)
     print("\nMethod 3 After:")
     tmp_list = rawList
     while tmp_list != None:
         print(str(tmp_list.val), end='->')
         tmp_list = tmp_list.next
     rawList = ListNode(1)
-    rawList = solution.removeNthFromEnd2(rawList, 1)
+    rawList = solution.removeNthFromEnd3(rawList, 1)
     print("\nMethod 3 After:")
     tmp_list = rawList
     while tmp_list != None:

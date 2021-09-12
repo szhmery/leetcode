@@ -14,6 +14,9 @@ class Solution:
     # Breadth first search - BFS
     # space O(n)
     # time O(n)
+    # 时间复杂度：O(N)。每个节点会被访问一次且只会被访问一次，即从队列中弹出，并建立 next 指针。
+    # 空间复杂度：O(N)。这是一棵完美二叉树，它的最后一个层级包含 N/2 个节点。广度优先遍历的复杂度取决于一个层级上的最大元素数量。
+    # 这种情况下空间复杂度为 O(N)。
     def connect(self, root: 'Node') -> 'Node':
         queue = []
         if root is None:
@@ -74,6 +77,8 @@ class Solution:
     # Hierarchical progressive method
     # space O(n)
     # time O(1)
+    # 时间复杂度：O(N)，每个节点只访问一次。
+    # 空间复杂度：O(1)，不需要存储额外的节点。
     def connect4(self, root: 'Node') -> 'Node':
         head = root
         while head:
@@ -87,6 +92,23 @@ class Solution:
             head = tmp_head.left
         return root
 
+    def connect5(self, root: 'Node') -> 'Node':
+        if not root:
+            return root
+        queue = [root]
+        while queue:
+            tmp = queue
+            queue = []
+            pre = None
+            while tmp:
+                node = tmp.pop(0)
+                if node.right and node.left:
+                    node.right.next = pre
+                    node.left.next = node.right
+                    pre = node.left
+                    queue.append(node.right)
+                    queue.append(node.left)
+        return root
 
 if __name__ == '__main__':
     root = Node(1)
@@ -98,6 +120,14 @@ if __name__ == '__main__':
     a.right = Node(5)
     b.left = Node(6)
     b.right = Node(7)
+    a.left.left = Node(8)
+    a.left.right = Node(9)
+    a.right.left = Node(10)
+    a.right.right = Node(11)
+    b.left.left = Node(12)
+    b.left.right = Node(13)
+    b.right.right = Node(14)
+    b.right.right = Node(15)
 
     solution = Solution()
     root = solution.connect(root)
@@ -109,6 +139,6 @@ if __name__ == '__main__':
     root = solution.connect3(root)
     print('method 3: connect:')
     PrintBST.printBST(root)
-    root = solution.connect4(root)
-    print('method 4: connect:')
+    root = solution.connect5(root)
+    print('method 5: connect:')
     PrintBST.printBST(root)

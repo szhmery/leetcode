@@ -3,7 +3,7 @@ class Solution:
     def hammingWeight(self, n: int) -> int:
         count = 0
         while n:
-            n = n & (n-1)
+            n = n & (n-1)  # Remove last bit A&(A-1)
             count += 1
         return count
     # https://www.bilibili.com/video/BV1i5411J7SA?from=search&seid=6359485431255227196
