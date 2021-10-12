@@ -8,11 +8,11 @@ class Solution:
         step = 0
         start = 0
         end = 0
-        for i in range(len(nums) - 1):
-            end = max(end, i + nums[i])
-            if i == start:
-                step += 1
-                start = end
+        for i in range(len(nums) - 1): # 不需要在最后一个格子跳，所以不用到最后一个格子
+            end = max(end, i + nums[i]) # 能到达的最右格子
+            if i == start: # 如果达到了下个区域的左界限
+                step += 1 # 步数增加一个，因为区域增加一个
+                start = end # 更新右界限
         return step
 
     # DP

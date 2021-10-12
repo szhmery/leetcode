@@ -18,6 +18,9 @@ class Solution:
         pre = 1
         for i in range(3, n + 1):
             pre, cur = cur, pre + cur
+            # res = pre + cur
+            # pre = cur
+            # cur = res
         return cur
 
 

@@ -1,5 +1,7 @@
 class Solution:
     # iterative
+    # 时间复杂度 O(logn) ： 二分的时间复杂度为对数级别。
+    # 空间复杂度 O(1) ： res, b 等变量占用常数大小额外空间
     # https://www.bilibili.com/video/BV1W54y1q7CV?from=search&seid=5704309823833009478
     def myPow(self, x, n):
         """

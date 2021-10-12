@@ -2,8 +2,8 @@ from typing import List
 
 
 class Solution:
-    # 时间复杂度 O(NlogN) ： 其中 NN 为数组长度；归并排序使用 O(NlogN) 时间；
-    # 空间复杂度 O(N) ： 辅助数组 tmptmp 占用 O(N) 大小的额外空间；
+    # 时间复杂度 O(NlogN) ： 其中 N 为数组长度；归并排序使用 O(NlogN) 时间；
+    # 空间复杂度 O(N) ： 辅助数组 tmp 占用 O(N) 大小的额外空间；
 
     def reversePairs(self, nums: List[int]) -> int:
         def merge_sort(l, r):
@@ -20,6 +20,8 @@ class Solution:
                 if i == m + 1:  # 左边结束，把右边一个个考过来
                     nums[k] = tmp[j]
                     j += 1
+                # 当 j = r + 1 时： 代表右子数组已合并完，因此添加左子数组当前元素 tmp[i] ，并执行 i = i + 1
+                # 否则，当 tmp[i]≤tmp[j] 时： 添加左子数组当前元素 tmp[i] ，并执行 i = i + 1
                 elif j == r + 1 or tmp[i] <= tmp[j]:
                     nums[k] = tmp[i]
                     i += 1

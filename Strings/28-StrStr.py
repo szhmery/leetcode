@@ -66,7 +66,7 @@ class Solution:
         n, m = len(haystack), len(needle)
         if m == 0: return 0
 
-        lps = self.cretelps(needle)
+        lps = self.createlps(needle)
         # print("lps", lps)
         sp, pp = 0, 0
         while sp < n:
@@ -85,7 +85,7 @@ class Solution:
                 return sp - m
         return -1
 
-    def cretelps(self, p):
+    def createlps(self, p):
         lps = [0] * len(p)
         prefix = 0
         curr = 1

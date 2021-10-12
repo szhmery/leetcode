@@ -7,8 +7,17 @@ class Solution:
         max_steps = 0
         for i in range(len(nums) - 1):
             max_steps = max(max_steps, i + nums[i])
-            if max_steps < i + 1:
+            if max_steps < i + 1:  # 如果这次的最大步数不能达到下一个台阶，那么就是false
                 return False
+        return True
+
+    def canJump2(self, nums: List[int]) -> bool:
+        max_steps = 0
+        for i in range(len(nums)):
+            if max_steps < i:  # 如果最大步数不能到达这个台阶，那么失败。
+                return False
+            max_steps = max(max_steps, i + nums[i])  # 计算下个最大步数
+
         return True
 
 

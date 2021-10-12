@@ -4,13 +4,14 @@ sys.setrecursionlimit(100000)
 
 
 class Solution:
-    # iterate
+    # iterate, DP
+    # https://leetcode-cn.com/leetbook/read/illustration-of-algorithm/oxp3er/
     def lastRemaining(self, n: int, m: int) -> int:
         if n < 1 or m < 1:
             return -1
         last = 0
         for i in range(2, n + 1):
-            last = (last + m) % i
+            last = (last + m) % i  # dp[i]=(dp[i−1]+m)%i
         return last
 
     # recursion

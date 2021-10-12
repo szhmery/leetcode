@@ -5,8 +5,20 @@ class Solution:
             a = (a ^ b) % 0x100000000
             b = (carry << 1) % 0x100000000
         return a if a <= 0x7FFFFFFF else a | (~0x100000000 + 1)
-    # wrong answer
+
+    # n=a⊕b 非进位和：异或运算
+    # c=a&b<<1 进位：与运算+左移一位
+    # s=a+b⇒s=n+c
     def getSum2(self, a: int, b: int) -> int:
+        x = 0xffffffff
+        a, b = a & x, b & x
+        while b != 0:
+            a, b = (a ^ b), (a & b) << 1 & x
+        return a if a <= 0x7fffffff else ~(a ^ x)
+
+
+    # wrong answer
+    def getSum3(self, a: int, b: int) -> int:
         x = 0xffffffff
         a, b = a & x, b & x
         while b != 0:
