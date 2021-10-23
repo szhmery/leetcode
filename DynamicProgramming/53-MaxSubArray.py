@@ -11,6 +11,8 @@ class Solution:
     # https://www.bilibili.com/video/BV11A41187AR?from=search&seid=3304823974143982280
     def maxSubArray(self, nums: List[int]) -> int:
         max_subarray = current_subarray = nums[0]
+        # 如果 sum > 0，则说明 sum 对结果有增益效果，则 sum 保留并加上当前遍历数字
+        # 如果 sum <= 0，则说明 sum 对结果无增益效果，需要舍弃，则 sum 直接更新为当前遍历数字
         for num in nums[1:]:
             current_subarray = max(num, current_subarray + num)
             max_subarray = max(max_subarray, current_subarray)

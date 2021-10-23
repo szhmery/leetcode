@@ -1,5 +1,5 @@
 class Solution:
-    # two points are wrong. Because s1, s2 may have same chars, we can't distinguish them
+    # two points are wrong. Because s1, s2 may have same chars, we can't separate them
     # DP
     # https://leetcode-cn.com/problems/interleaving-string/solution/jiao-cuo-zi-fu-chuan-by-leetcode-solution/
     # time O(nm)
